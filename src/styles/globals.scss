@@ -1,0 +1,38 @@
+@import "variables";
+@import "components/productCard";
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+body {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  font-size: 0.8vw;
+  h4 {
+    font-size: 1.2vw;
+  }
+}
+
+button {
+  border: none ;
+  background: $main-color;
+  color: white;
+  font-size: 1vw;
+  transition: background-color 0.3s linear;
+}
+
+button:hover {
+  background: white;
+  color: $main-color;
+}
+
+input, select, option {
+  padding: 5%;
+  margin: 5%;
+  min-width: 50px;
+  min-height: 25px;
+  border-radius: 7px;
+  border: $main-color solid 1px;
+}
+
+input:focus, select:focus, option:focus {
+  outline: 0;
+}
