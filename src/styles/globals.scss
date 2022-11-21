@@ -1,5 +1,9 @@
 @import "variables";
 @import "components/productCard";
+@import "components/cart";
+@import "components/cartItem";
+@import "components/home";
+
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 
 body {
@@ -35,4 +39,13 @@ input, select, option {
 
 input:focus, select:focus, option:focus {
   outline: 0;
+}
+
+@media only screen and (max-width: 700px) {
+  body {
+    font-size: 2.5vw;
+    h3 {
+      font-size: 3vw;
+    }
+  }
 }

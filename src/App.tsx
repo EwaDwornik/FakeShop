@@ -2,10 +2,12 @@ import React, {useEffect, useState} from 'react';
 import './styles/globals.scss';
 import { Product} from "./model";
 import {Context} from "./context/context";
+import Drawer from '@mui/material/Drawer';
 
 
 function App(props: any) {
     const [products, setProducts] = useState<Product[]>([]);
+
 
     //fetching data from API
     const getData = async () => {
@@ -29,6 +31,7 @@ function App(props: any) {
             }}>
                 {/* sharing data with all children */}
                 {props.children}
+
             </Context.Provider>
 
         </div>

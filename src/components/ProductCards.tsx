@@ -1,16 +1,17 @@
 import React, {useContext, useState} from "react";
 import {Context} from "../context/context";
-import {Range} from "../model";
+import { PropsCards, Range} from "../model";
 
+import ProductCard from "./ProductCard";
 
-function ProductCards() {
+function ProductCards({handleAdd}: PropsCards) {
     const {products} = useContext(Context)
+    const [selectCategory, setSelectCategory] = useState("")
+
 
     const allCategoriesSet = new Set<string>();
     products.forEach(product => allCategoriesSet.add(product.category));
     const allCategories = Array.from(allCategoriesSet)
-
-    const [selectCategory, setSelectCategory] = useState("")
 
     function sortCategory(event: any) {
         event.preventDefault();
@@ -23,15 +24,9 @@ function ProductCards() {
     }
     const [range, setRange] = useState(initialRange);
 
-
     const results = products.filter(product => product.category.includes(selectCategory) &&
-         product.rating.rate > range.min && product.rating.rate < range.max
+        product.rating.rate > range.min && product.rating.rate < range.max
     )
-
-    function handleAddProduct(event: any){
-        event.preventDefault();
-    }
-
 
     return (
         <div>
@@ -76,24 +71,14 @@ function ProductCards() {
             </div>
             <div className="products-cards">
                 {results.map((product) =>
-                    <div className="product-card">
-                        <div><h3>{product.category}</h3></div>
-                        <div>
-                            <img src={product.image}/>
-                        </div>
-                        <div>{product.title}</div>
-                        <div>
-                            <div><h3>{product.price} $</h3></div>
-                            <div><h3>Rating: {product.rating.rate}</h3></div>
-                            <button onClick={handleAddProduct} >add to cart</button>
-                        </div>
-                    </div>
+                    <ProductCard product={product} handleAdd={handleAdd}/>
                 )}
             </div>
         </div>
 
     )
 }
+
 
 export default ProductCards;
 

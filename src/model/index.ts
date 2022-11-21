@@ -5,15 +5,10 @@ export interface Product {
     description: string;
     category: string;
     image: string;
-    rating: { rate: number, count: number }
+    rating: { rate: number, count: number };
+    amount: number;
 }
 
-export interface Cart {
-    productQuantity: number;
-    title: string;
-    totalElements: number;
-    totalPrice: number;
-}
 
 export interface ContextType {
     products: Product[];
@@ -22,4 +17,25 @@ export interface ContextType {
 export interface Range {
     min: number,
     max: number
+}
+
+export interface PropsCard {
+    product: Product;
+    handleAdd: (clickedItem: Product) => void;
+}
+
+export interface PropsCart {
+    cartItems: Product[];
+    addToCart: (clickedItem: Product) => void;
+    removeFromCart: (id: number) => void;
+}
+
+export interface PropsItem {
+    item: Product
+    addToCart: (clickedItem: Product) => void;
+    removeFromCart: (id: number) => void;
+}
+
+export interface PropsCards {
+    handleAdd: (clickedItem: Product) => void;
 }

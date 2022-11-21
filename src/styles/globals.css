@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap");
+.select-option {
+  margin: 3%;
+  display: flex;
+  justify-content: center;
+}
+.select-option div {
+  margin: 2%;
+}
+
+.products-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 2%;
+  flex-direction: row;
+}
+
+.product-card {
+  display: grid;
+  grid-template-rows: 1fr 3fr 2fr 1fr;
+  width: 250px;
+  height: 350px;
+  border-radius: 7px;
+  position: relative;
+  text-align: center;
+  box-shadow: -1px 15px 30px -12px black;
+  z-index: 1;
+  margin: 2%;
+  overflow: hidden;
+}
+.product-card img {
+  object-fit: contain;
+  max-height: 130px;
+  max-width: 230px;
+  width: auto;
+  height: auto;
+  padding: 5%;
+  transition: max-height 1s linear;
+}
+.product-card img:hover {
+  max-height: 250px;
+}
+.product-card div:nth-child(1) {
+  background-color: purple;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.product-card div:nth-child(4) {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: purple;
+  position: absolute;
+  bottom: 0;
+}
+.product-card div:nth-child(4) div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.shoppingCart {
+  background-color: white;
+  z-index: 200;
+  position: relative;
+}
+
+.cartItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.cartItem img {
+  max-height: 100px;
+  max-width: 100px;
+}
+.cartItem div:nth-child(1) {
+  width: 30%;
+}
+.cartItem div:nth-child(2) {
+  width: 20%;
+}
+.cartItem div:nth-child(3) {
+  width: 30%;
+}
+.cartItem div:nth-child(4) {
+  width: 20%;
+}
+
+.cart-open {
+  position: fixed;
+  z-index: 5;
+  right: 20px;
+  top: 20px;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+  font-size: 0.8vw;
+}
+body h4 {
+  font-size: 1.2vw;
+}
+
+button {
+  border: none;
+  background: purple;
+  color: white;
+  font-size: 1vw;
+  transition: background-color 0.3s linear;
+}
+
+button:hover {
+  background: white;
+  color: purple;
+}
+
+input, select, option {
+  padding: 5%;
+  margin: 5%;
+  min-width: 50px;
+  min-height: 25px;
+  border-radius: 7px;
+  border: purple solid 1px;
+}
+
+input:focus, select:focus, option:focus {
+  outline: 0;
+}
+
+@media only screen and (max-width: 700px) {
+  body {
+    font-size: 2.5vw;
+  }
+  body h3 {
+    font-size: 3vw;
+  }
+}
+
+/*# sourceMappingURL=globals.css.map */
