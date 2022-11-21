@@ -3,6 +3,7 @@ import {Product, PropsCart} from "../../model";
 
 
 function Cart ({cartItems, addToCart, removeFromCart}: PropsCart) {
+
     const total = (items: Product[]) =>
         items.reduce((ack: number, item) => ack + item.amount * item.price, 0)
 

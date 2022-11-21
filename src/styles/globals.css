@@ -111,6 +111,7 @@ button {
   background: purple;
   color: white;
   font-size: 1vw;
+  font-weight: normal;
   transition: background-color 0.3s linear;
 }
 

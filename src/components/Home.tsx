@@ -3,7 +3,6 @@ import ProductCards from "./ProductCards";
 import {Product} from "../model";
 import Drawer from "@mui/material/Drawer";
 import Cart from "./Cart/Cart";
-import {Badge} from "@mui/material";
 
 
 function Home() {
@@ -46,7 +45,7 @@ function Home() {
             </Drawer>
 
             <button className="cart-open" onClick={() => setCartOpen(true)}>
-                <Badge badgeContent={getTotalItems(cartItems)}/>
+                Cart {getTotalItems(cartItems)}
             </button>
             <ProductCards handleAdd={handleAdd}/>
         </div>

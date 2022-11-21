@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import './styles/globals.scss';
 import { Product} from "./model";
 import {Context} from "./context/context";
-import Drawer from '@mui/material/Drawer';
 
 
 function App(props: any) {
