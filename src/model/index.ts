@@ -10,6 +10,17 @@ export interface Product {
 }
 
 
+export interface ProductNoFuture {
+    amount: number;
+    category: string;
+    description: string;
+    image: string;
+    price: number;
+    rating: number;
+    title: string;
+}
+
+
 export interface ContextType {
     products: Product[];
 }
