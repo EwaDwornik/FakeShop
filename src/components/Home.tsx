@@ -9,9 +9,12 @@ function Home() {
     const [cartItems, setCartItems] = useState<Product[]>([])
     const [cartOpen, setCartOpen] = useState(false);
 
+
+
     const handleAdd = (clickedItem: Product) => {
         setCartItems(previous => {
             const isInCart = previous.find(item => item.id === clickedItem.id)
+
             if (isInCart) {
                 return previous.map(item => (
                     item.id === clickedItem.id ? {...item, amount: item.amount + 1} : item
@@ -20,6 +23,8 @@ function Home() {
             return [...previous, {...clickedItem, amount: 1}]
         })
     }
+
+
 
     const getTotalItems = (items: Product[]) => items.reduce((ack: number, item) => ack + item.amount, 0);
 

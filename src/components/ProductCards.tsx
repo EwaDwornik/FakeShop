@@ -24,8 +24,8 @@ function ProductCards({handleAdd}: PropsCards) {
     }
     const [range, setRange] = useState(initialRange);
 
-    const results = products.filter(product => product.category.includes(selectCategory) &&
-        product.rating.rate > range.min && product.rating.rate < range.max
+    const results = products.filter(product => product.category.includes(selectCategory)
+        && product.rating.rate > range.min && product.rating.rate < range.max
     )
 
     return (

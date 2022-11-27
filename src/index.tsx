@@ -6,6 +6,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Home from "./components/Home";
+import AddProduct from "./components/CRUD/addProduct";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,6 +17,8 @@ root.render(
           <Router>
               <Routes>
                   <Route path="/" element={<Home/>}/>
+                  <Route path="/add" element={<AddProduct/>}/>
+
               </Routes>
           </Router>
       </App>
