@@ -34,7 +34,7 @@ function ProductCards({handleAdd}: PropsCards) {
                 <div>
                     <label>category</label>
                     <select
-                        className="select"
+                        className="form-home"
                         onChange={sortCategory}
                     >
                         <option value="" selected>all</option>
@@ -49,7 +49,7 @@ function ProductCards({handleAdd}: PropsCards) {
                         type='number'
                         min="0" max="5"
                         step="0.1"
-                        className="form-control shake"
+                        className="form-home"
                         required
                         value={range.min}
                         onChange={e => {
@@ -62,7 +62,7 @@ function ProductCards({handleAdd}: PropsCards) {
                         type="number"
                         min="0" max="5"
                         step="0.1"
-                        className="form-control shake"
+                        className="form-home"
                         value={range.max}
                         onChange={e => {
                             setRange({...range, max: e.target.valueAsNumber});

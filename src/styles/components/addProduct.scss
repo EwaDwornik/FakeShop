@@ -1,0 +1,37 @@
+.formAddProduct {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+ div{
+   margin: 5%;
+   width: 15vw;
+ }
+}
+
+.pos-relative {
+  position: relative;
+  display: grid;
+  align-content: start;
+}
+
+.effect-green {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.effect-green ~ .focus-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: $main-color;
+  transition: 0.4s;
+}
+
+.effect-green:focus ~ .focus-border {
+  width: 100%;
+  transition: 0.4s;
+}
+

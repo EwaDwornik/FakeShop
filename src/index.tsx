@@ -7,6 +7,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Home from "./components/Home";
 import AddProduct from "./components/CRUD/addProduct";
+import ProductList from "./components/CRUD/productList";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -18,6 +19,8 @@ root.render(
               <Routes>
                   <Route path="/" element={<Home/>}/>
                   <Route path="/add" element={<AddProduct/>}/>
+                  <Route path="/ProductList" element={<ProductList/>}/>
+
               </Routes>
           </Router>
       </App>

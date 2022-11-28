@@ -1,4 +1,5 @@
 import firebase from "./firebase";
+import {ProductNoFuture} from "../model";
 
 const db = firebase.ref("/add");
 
@@ -6,7 +7,8 @@ const getAll = () => {
     return db;
 };
 
-const create = (data: { image: string; amount: string; price: string; rating: string; description: string; id: number; title: string; category: string }) => {
+
+const create = (data: ProductNoFuture) => {
     return db.push(data);
 };
 

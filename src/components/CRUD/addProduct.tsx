@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import TutorialDataService from "../../services/product.service";
+import React, {useState} from "react";
+import ProductDataService from "../../services/product.service";
+import {categories, generateID} from "../../services/utilities";
+import {ProductNoFuture} from "../../model";
 
 const AddProduct = () => {
-    const initialState = {
-        id: 3,
-        title: "",
-        price: "",
-        description: "",
+    const initialState: ProductNoFuture = {
+        id: 0,
         category: "",
+        description: "",
         image: "",
-        rating: "",
-        amount: "",
+        price: 0.1,
+        title: "",
     };
 
 
@@ -18,23 +18,21 @@ const AddProduct = () => {
     const [submitted, setSubmitted] = useState(false);
 
     const handleInputChange = (event: { target: { name: any; value: any; }; }) => {
-        const { name, value } = event.target;
-        setProduct({ ...product, [name]: value });
+        const {name, value} = event.target;
+        setProduct({...product, [name]: value});
     };
 
-    const saveTutorial = () => {
+    const saveProduct = () => {
         var data = {
-            id: product.id,
-            title: product.title,
-            price: product.price,
-            description: product.description,
+            id: generateID(),
             category: product.category,
+            description: product.description,
             image: product.image,
-            rating: product.rating,
-            amount: product.amount,
+            price: product.price,
+            title: product.title,
         };
 
-        TutorialDataService.create(data)
+        ProductDataService.create(data)
             .then(() => {
                 setSubmitted(true);
             })
@@ -43,123 +41,97 @@ const AddProduct = () => {
             });
     };
 
-    const newTutorial = () => {
+    const newProduct = () => {
         setProduct(initialState);
         setSubmitted(false);
     };
 
     return (
-        <div className="submit-form">
-            {submitted ? (
-                <div>
-                    <h4>You submitted successfully!</h4>
-                    <button className="btn btn-success" onClick={newTutorial}>
-                        Add
-                    </button>
-                </div>
-            ) : (
-                <div>
-                    <div className="form-group">
-                        <label htmlFor="title">ID</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="id"
-                            required
-                            value={product.id}
-                            onChange={handleInputChange}
-                            name="id"
-                        />
+        <div>
+            <div className="formAddProduct">
+                {submitted ? (
+                    <div>
+                        <h4>You submitted successfully!</h4>
+                        <button onClick={newProduct}>
+                            Add
+                        </button>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="title">Title</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="title"
-                            required
-                            value={product.title}
-                            onChange={handleInputChange}
-                            name="title"
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="title">Price</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="price"
-                            required
-                            value={product.price}
-                            onChange={handleInputChange}
-                            name="price"
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="title">description</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="description"
-                            required
-                            value={product.description}
-                            onChange={handleInputChange}
-                            name="description"
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="title">category</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="category"
-                            required
-                            value={product.category}
-                            onChange={handleInputChange}
-                            name="category"
-                        />
-                    </div>
+                ) : (
+                    <div>
+                        <div className="pos-relative">
+                            <label className="form-label">Title</label>
+                            <input
+                                type="text"
+                                className="effect-green"
+                                id="title"
+                                required
+                                value={product.title}
+                                onChange={handleInputChange}
+                                name="title"
+                            />
+                            <span className="focus-border"></span>
 
-                    <div className="form-group">
-                        <label htmlFor="description">image</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="image"
-                            required
-                            value={product.image}
-                            onChange={handleInputChange}
-                            name="image"
-                        />
+                        </div>
+                        <div className="pos-relative">
+                            <label className="form-label">Price in euro</label>
+                            <input
+                                type="number"
+                                className="effect-green"
+                                id="price"
+                                required
+                                value={product.price}
+                                onChange={handleInputChange}
+                                name="price"
+                            />
+                            <span className="focus-border"></span>
+
+                        </div>
+                        <div className="pos-relative">
+                            <label className="form-label">description</label>
+                            <input
+                                type="text"
+                                className="effect-green"
+                                id="description"
+                                required
+                                value={product.description}
+                                onChange={handleInputChange}
+                                name="description"
+                            />
+                            <span className="focus-border"></span>
+
+                        </div>
+                        <div className="pos-relative">
+                            <label className="form-label">category</label>
+                            <select onChange={handleInputChange}
+                                    className="effect-green">
+                                {categories.map((category) =>
+                                    <option value={product.category}>{category}</option>)}
+                            </select>
+                            <span className="focus-border"></span>
+                        </div>
+
+                        <div className="pos-relative">
+                            <label className="form-label">image</label>
+                            <input
+                                type="text"
+                                className="effect-green"
+                                id="image"
+                                required
+                                value={product.image}
+                                onChange={handleInputChange}
+                                name="image"
+                            />
+                            <span className="focus-border"></span>
+
+                        </div>
+                        <div>
+                            <button onClick={saveProduct}>
+                                Submit
+                            </button>
+                        </div>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="title">rating</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="rating"
-                            required
-                            value={product.rating}
-                            onChange={handleInputChange}
-                            name="rating"
-                        />
-                    </div><div className="form-group">
-                    <label htmlFor="title">amount</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="amount"
-                        required
-                        value={product.amount}
-                        onChange={handleInputChange}
-                        name="amount"
-                    />
-                </div>
-                    <button onClick={saveTutorial} className="btn btn-success">
-                        Submit
-                    </button>
-                </div>
-            )}
+                )}
+            </div>
         </div>
     );
 };

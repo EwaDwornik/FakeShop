@@ -3,6 +3,7 @@
 @import "components/cart";
 @import "components/cartItem";
 @import "components/home";
+@import "components/addProduct";
 
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 
@@ -29,17 +30,9 @@ button:hover {
   color: $main-color;
 }
 
-input, select, option {
-  padding: 5%;
-  margin: 5%;
-  min-width: 50px;
-  min-height: 25px;
-  border-radius: 7px;
-  border: $main-color solid 1px;
-}
 
-input:focus, select:focus, option:focus {
-  outline: 0;
+:focus {
+  outline: none;
 }
 
 @media only screen and (max-width: 700px) {

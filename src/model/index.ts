@@ -11,15 +11,20 @@ export interface Product {
 
 
 export interface ProductNoFuture {
-    amount: number;
+    id: number;
     category: string;
     description: string;
     image: string;
     price: number;
-    rating: number;
     title: string;
 }
 
+export interface PropsProductNoFuture {
+    product: ProductNoFuture[],
+    key: number;
+    currentProduct: ProductNoFuture | null,
+    currentIndex: number,
+}
 
 export interface ContextType {
     products: Product[];

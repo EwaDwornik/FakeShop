@@ -67,3 +67,16 @@
     }
   }
 }
+
+.form-home {
+  padding: 5%;
+  margin: 5%;
+  min-width: 80px;
+  min-height: 25px;
+  border-radius: 7px;
+  border: $main-color solid 1px;
+}
+
+.form-home:focus{
+  outline: 0;
+}
