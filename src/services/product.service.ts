@@ -1,12 +1,11 @@
-import firebase from "./firebase";
+import {database} from "./firebase/firebase.config";
 import {ProductNoFuture} from "../model";
 
-const db = firebase.ref("/add");
+const db = database.ref("/add");
 
 const getAll = () => {
     return db;
 };
-
 
 const create = (data: ProductNoFuture) => {
     return db.push(data);

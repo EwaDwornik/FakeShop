@@ -1,11 +1,12 @@
 import React, {useState} from "react";
-import ProductDataService from "../../services/product.service";
 import {categories, generateID} from "../../services/utilities";
 import {ProductNoFuture} from "../../model";
+import {firestore} from "../../services/firebase/firebase.config";
+
 
 const AddProduct = () => {
     const initialState: ProductNoFuture = {
-        id: 0,
+        id: generateID(),
         category: "",
         description: "",
         image: "",
@@ -13,127 +14,126 @@ const AddProduct = () => {
         title: "",
     };
 
-
     const [product, setProduct] = useState(initialState);
     const [submitted, setSubmitted] = useState(false);
 
-    const handleInputChange = (event: { target: { name: any; value: any; }; }) => {
-        const {name, value} = event.target;
-        setProduct({...product, [name]: value});
-    };
-
-    const saveProduct = () => {
-        var data = {
-            id: generateID(),
-            category: product.category,
-            description: product.description,
-            image: product.image,
-            price: product.price,
-            title: product.title,
-        };
-
-        ProductDataService.create(data)
-            .then(() => {
-                setSubmitted(true);
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        setSubmitted(true);
+        firestore.collection("products").add(product)
+            .then((docRef) => {
+                console.log("Document written with ID: ", docRef.id);
             })
-            .catch((e: any) => {
-                console.log(e);
+            .catch((error) => {
+                console.error("Error adding document: ", error);
             });
-    };
+};
 
-    const newProduct = () => {
-        setProduct(initialState);
-        setSubmitted(false);
-    };
+const newProduct = () => {
+    setProduct(initialState);
+    setSubmitted(false);
+};
 
-    return (
-        <div>
-            <div className="formAddProduct">
-                {submitted ? (
+return (
+    <div>
+        <div className="formAddProduct">
+            {submitted ? (
+                <div>
+                    <h4>You submitted successfully!</h4>
+                    <button onClick={newProduct}>
+                        Add
+                    </button>
+                </div>
+            ) : (
+                <div>
+                    <div className="pos-relative">
+                        <label className="form-label">Title</label>
+                        <input
+                            type="text"
+                            className="effect-green"
+                            id="title"
+                            required
+                            value={product.title}
+                            onChange={e => {
+                                setProduct({...product, title: e.target.value});
+                            }}
+                            name="title"
+                        />
+                        <span className="focus-border"></span>
+
+                    </div>
+                    <div className="pos-relative">
+                        <label className="form-label">Price in euro</label>
+                        <input
+                            type="number"
+                            className="effect-green"
+                            id="price"
+                            required
+                            value={product.price}
+                            onChange={e => {
+                                // @ts-ignore
+                                setProduct({...product, price: e.target.value});
+                            }}
+                            name="price"
+                        />
+                        <span className="focus-border"></span>
+
+                    </div>
+                    <div className="pos-relative">
+                        <label className="form-label">description</label>
+                        <input
+                            type="text"
+                            className="effect-green"
+                            id="description"
+                            required
+                            value={product.description}
+                            onChange={e => {
+                                setProduct({...product, description: e.target.value})
+                            }}
+                            name="description"
+                        />
+                        <span className="focus-border"></span>
+
+                    </div>
+                    <div className="pos-relative">
+                        <label className="form-label">category</label>
+                        <select onChange={e => {
+                            setProduct({...product, category: e.target.value})
+                        }}
+                                className="effect-green">
+                            {categories.map((category) =>
+                                <option value={product.category}>{category}</option>)}
+                        </select>
+                        <span className="focus-border"></span>
+                    </div>
+
+                    <div className="pos-relative">
+                        <label className="form-label">image</label>
+                        <input
+                            type="text"
+                            className="effect-green"
+                            id="image"
+                            required
+                            value={product.image}
+                            onChange={e => {
+                                setProduct({...product, image: e.target.value})
+                            }}
+                            name="image"
+                        />
+                        <span className="focus-border"></span>
+
+                    </div>
                     <div>
-                        <h4>You submitted successfully!</h4>
-                        <button onClick={newProduct}>
-                            Add
+                        <button onClick={handleSubmit}>
+                            Submit
                         </button>
                     </div>
-                ) : (
-                    <div>
-                        <div className="pos-relative">
-                            <label className="form-label">Title</label>
-                            <input
-                                type="text"
-                                className="effect-green"
-                                id="title"
-                                required
-                                value={product.title}
-                                onChange={handleInputChange}
-                                name="title"
-                            />
-                            <span className="focus-border"></span>
-
-                        </div>
-                        <div className="pos-relative">
-                            <label className="form-label">Price in euro</label>
-                            <input
-                                type="number"
-                                className="effect-green"
-                                id="price"
-                                required
-                                value={product.price}
-                                onChange={handleInputChange}
-                                name="price"
-                            />
-                            <span className="focus-border"></span>
-
-                        </div>
-                        <div className="pos-relative">
-                            <label className="form-label">description</label>
-                            <input
-                                type="text"
-                                className="effect-green"
-                                id="description"
-                                required
-                                value={product.description}
-                                onChange={handleInputChange}
-                                name="description"
-                            />
-                            <span className="focus-border"></span>
-
-                        </div>
-                        <div className="pos-relative">
-                            <label className="form-label">category</label>
-                            <select onChange={handleInputChange}
-                                    className="effect-green">
-                                {categories.map((category) =>
-                                    <option value={product.category}>{category}</option>)}
-                            </select>
-                            <span className="focus-border"></span>
-                        </div>
-
-                        <div className="pos-relative">
-                            <label className="form-label">image</label>
-                            <input
-                                type="text"
-                                className="effect-green"
-                                id="image"
-                                required
-                                value={product.image}
-                                onChange={handleInputChange}
-                                name="image"
-                            />
-                            <span className="focus-border"></span>
-
-                        </div>
-                        <div>
-                            <button onClick={saveProduct}>
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-                )}
-            </div>
+                </div>
+            )}
         </div>
-    );
-};
+    </div>
+);
+}
+;
 
 export default AddProduct;
