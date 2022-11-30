@@ -19,15 +19,10 @@ export interface ProductNoFuture {
     title: string;
 }
 
-export interface PropsProductNoFuture {
-    product: ProductNoFuture[],
-    key: number;
-    currentProduct: ProductNoFuture | null,
-    currentIndex: number,
-}
 
 export interface ContextType {
     products: Product[];
+    info: ProductNoFuture[];
 }
 
 export interface Range {

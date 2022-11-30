@@ -1,11 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import './styles/globals.scss';
-import { Product} from "./model";
+import {Product, ProductNoFuture} from "./model";
 import {Context} from "./context/context";
-
+import {productsCollection} from "./services/firebase/firebase.utils";
 
 function App(props: any) {
     const [products, setProducts] = useState<Product[]>([]);
+    const [info , setInfo] = useState<ProductNoFuture[]>([]);
+
+    const getProducts = async () => {
+        let tempProducts: any[] = []
+        productsCollection.get().then((snapshot) => {
+            snapshot.forEach((doc) => {
+                tempProducts = [...tempProducts, doc.data()]
+            })
+        }).then(() => {
+            setInfo(tempProducts)
+        })
+    }
+    useEffect(() => {
+        getProducts()
+    }, [])
 
 
     //fetching data from API
@@ -23,10 +38,11 @@ function App(props: any) {
     }, [])
 
 
+
     return (
         <div>
             <Context.Provider value={{
-                products
+                products, info
             }}>
                 {/* sharing data with all children */}
                 {props.children}

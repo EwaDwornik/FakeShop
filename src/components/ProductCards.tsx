@@ -4,7 +4,7 @@ import { PropsCards, Range} from "../model";
 
 import ProductCard from "./ProductCard";
 
-function ProductCards({handleAdd}: PropsCards) {
+const ProductCards = ({handleAdd}: PropsCards) => {
     const {products} = useContext(Context)
     const [selectCategory, setSelectCategory] = useState("")
 

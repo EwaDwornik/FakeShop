@@ -4,5 +4,6 @@ import {ContextType} from "../model";
 
 export const Context = createContext<ContextType>({
     products: [],
+    info: []
 })
 
