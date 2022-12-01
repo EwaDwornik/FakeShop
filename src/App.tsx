@@ -12,8 +12,9 @@ function App(props: any) {
         const getProducts = async () => {
             let tempProducts: any[] = []
             productsCollection.get().then((snapshot) => {
-                snapshot.forEach((doc) => {
-                    tempProducts = [{...tempProducts}, doc.data()]
+                snapshot.forEach((doc) =>
+                {
+                    tempProducts = [{...tempProducts, id: doc.id}, doc.data()]
                 })
             }).then(() => {
                 setInfo(tempProducts)

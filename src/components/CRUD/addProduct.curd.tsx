@@ -1,13 +1,11 @@
 import React, {useState} from "react";
 import {categories} from "../../services/utilities";
 import {ProductNoFuture} from "../../model";
-import {v4 as uuidv4} from 'uuid';
 import {productsCollection} from "../../services/firebase/firebase.utils";
 
 
 const AddProductCurd = () => {
-    const initialState: ProductNoFuture = {
-        id: uuidv4(),
+    const initialState: Omit<ProductNoFuture, "id"> = {
         category: "",
         description: "",
         image: "",
@@ -34,6 +32,7 @@ const AddProductCurd = () => {
     const newProduct = () => {
         setProduct(initialState);
         setSubmitted(false);
+        console.log(product)
     };
 
         return (
