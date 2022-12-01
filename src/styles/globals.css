@@ -147,8 +147,20 @@
   transition: 0.4s;
 }
 
-.crudListTable table, .crudListTable tr, .crudListTable td {
+.crudListTable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2%;
+}
+.crudListTable table {
+  max-width: 30%;
   border: 1px solid black;
+  font-size: 1vw;
+}
+.crudListTable table th, .crudListTable table td {
+  border: 1px solid black;
+  padding: 1%;
 }
 
 body {

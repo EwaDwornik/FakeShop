@@ -1,5 +1,17 @@
-.crudListTable {
-  table, tr, td {
+.crudListTable  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2%;
+
+  table{
+    max-width: 30%;
     border: 1px solid black;
+    font-size: 1vw;
+    th, td {
+      border: 1px solid black;
+      padding: 1%;
+    }
   }
+
 }

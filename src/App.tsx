@@ -6,20 +6,20 @@ import {productsCollection} from "./services/firebase/firebase.utils";
 
 function App(props: any) {
     const [products, setProducts] = useState<Product[]>([]);
-    const [info , setInfo] = useState<ProductNoFuture[]>([]);
+    const [info, setInfo] = useState<ProductNoFuture[]>([]);
 
-    const getProducts = async () => {
-        let tempProducts: any[] = []
-        productsCollection.get().then((snapshot) => {
-            snapshot.forEach((doc) => {
-                tempProducts = [...tempProducts, doc.data()]
-            })
-        }).then(() => {
-            setInfo(tempProducts)
-        })
-    }
     useEffect(() => {
-        getProducts()
+        const getProducts = async () => {
+            let tempProducts: any[] = []
+            productsCollection.get().then((snapshot) => {
+                snapshot.forEach((doc) => {
+                    tempProducts = [{...tempProducts}, doc.data()]
+                })
+            }).then(() => {
+                setInfo(tempProducts)
+            })
+        }
+        getProducts();
     }, [])
 
 
@@ -36,7 +36,6 @@ function App(props: any) {
     useEffect(() => {
         getData()
     }, [])
-
 
 
     return (

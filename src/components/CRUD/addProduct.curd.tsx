@@ -1,39 +1,40 @@
 import React, {useState} from "react";
-import {categories, generateID} from "../../services/utilities";
+import {categories} from "../../services/utilities";
 import {ProductNoFuture} from "../../model";
-import {firestore} from "../../services/firebase/firebase.config";
+import {v4 as uuidv4} from 'uuid';
+import {productsCollection} from "../../services/firebase/firebase.utils";
 
 
 const AddProductCurd = () => {
-        const initialState: ProductNoFuture = {
-            id: generateID(),
-            category: "",
-            description: "",
-            image: "",
-            price: 0.1,
-            title: "",
-        };
+    const initialState: ProductNoFuture = {
+        id: uuidv4(),
+        category: "",
+        description: "",
+        image: "",
+        price: 0.1,
+        title: "",
+    };
 
         const [product, setProduct] = useState(initialState);
         const [submitted, setSubmitted] = useState(false);
 
-        const handleSubmit = async (e: any) => {
-            e.preventDefault();
-            setSubmitted(true);
-            firestore.collection("products").add(product)
-                .then((docRef) => {
-                    console.log("Document written with ID: ", docRef.id);
-                })
-                .catch((error) => {
-                    console.error("Error adding document: ", error);
-                });
-        };
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        setSubmitted(true);
+        productsCollection.add(product)
+            .then((docRef) => {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch((error) => {
+                console.error("Error adding document: ", error);
+            });
+    };
 
 
-        const newProduct = () => {
-            setProduct(initialState);
-            setSubmitted(false);
-        };
+    const newProduct = () => {
+        setProduct(initialState);
+        setSubmitted(false);
+    };
 
         return (
             <div>
@@ -96,12 +97,13 @@ const AddProductCurd = () => {
                                 <span className="focus-border"></span>
 
                             </div>
+
                             <div className="pos-relative">
                                 <label className="form-label">category</label>
-                                <select onChange={e => {
-                                    setProduct({...product, category: e.target.value})
-                                }}
-                                        className="effect-green">
+                                <select className="effect-green"
+                                        onChange={e => {
+                                            setProduct({...product, category: e.target.value})
+                                        }}>
                                     {categories.map((category) =>
                                         <option value={product.category}>{category}</option>)}
                                 </select>
