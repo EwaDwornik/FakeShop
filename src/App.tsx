@@ -8,18 +8,19 @@ function App(props: any) {
     const [products, setProducts] = useState<Product[]>([]);
     const [info, setInfo] = useState<ProductNoFuture[]>([]);
 
-    useEffect(() => {
-        const getProducts = async () => {
-            let tempProducts: any[] = []
-            productsCollection.get().then((snapshot) => {
-                snapshot.forEach((doc) =>
-                {
-                    tempProducts = [{...tempProducts, id: doc.id}, doc.data()]
-                })
-            }).then(() => {
-                setInfo(tempProducts)
+
+    const getProducts = async () => {
+        let tempProducts: any[] = []
+        productsCollection.get().then((snapshot) => {
+            snapshot.forEach((doc) => {
+                tempProducts = [...tempProducts, doc.data()]
             })
-        }
+        }).then(() => {
+            setInfo(tempProducts)
+        })
+    }
+
+    useEffect(() => {
         getProducts();
     }, [])
 

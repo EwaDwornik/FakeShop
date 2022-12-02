@@ -2,10 +2,11 @@ import React, {useState} from "react";
 import {categories} from "../../services/utilities";
 import {ProductNoFuture} from "../../model";
 import {productsCollection} from "../../services/firebase/firebase.utils";
-
+import {v4 as uuidv4} from 'uuid';
 
 const AddProductCurd = () => {
-    const initialState: Omit<ProductNoFuture, "id"> = {
+    const initialState: ProductNoFuture = {
+        id: uuidv4(),
         category: "",
         description: "",
         image: "",
@@ -19,13 +20,7 @@ const AddProductCurd = () => {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         setSubmitted(true);
-        productsCollection.add(product)
-            .then((docRef) => {
-                console.log("Document written with ID: ", docRef.id);
-            })
-            .catch((error) => {
-                console.error("Error adding document: ", error);
-            });
+        productsCollection.doc(product.id).set(product);
     };
 
 
