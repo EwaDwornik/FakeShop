@@ -1,34 +1,43 @@
-import React, {useState} from "react";
-import {categories} from "../../services/utilities";
-import {ProductNoFuture} from "../../model";
+import React, {useEffect, useState} from "react";
+import {categories, initialStateAddForm} from "../../services/utilities";
 import {productsCollection} from "../../services/firebase/firebase.utils";
-import {v4 as uuidv4} from 'uuid';
 
-const AddProductCurd = () => {
-    const initialState: ProductNoFuture = {
-        id: uuidv4(),
-        category: "",
-        description: "",
-        image: "",
-        price: 0.1,
-        title: "",
-    };
+const AddProductCurd = ({addOrEdit, currentId}: any) => {
 
-        const [product, setProduct] = useState(initialState);
+        const [product, setProduct] = useState(initialStateAddForm);
         const [submitted, setSubmitted] = useState(false);
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
-        setSubmitted(true);
-        productsCollection.doc(product.id).set(product);
-    };
+        const handleSubmit = async (e: any) => {
+            e.preventDefault();
+            setSubmitted(true);
+            addOrEdit(product);
+            setProduct({...initialStateAddForm});
+        };
 
+        const getLinkById = async (id: any) => {
+            const doc = await productsCollection.doc(id).get();
+            console.log(doc.data());
+            // @ts-ignore
+            setProduct({...doc.data()});
+        };
 
-    const newProduct = () => {
-        setProduct(initialState);
-        setSubmitted(false);
-        console.log(product)
-    };
+        const handleInputChange = (e: any) => {
+            const {name, value} = e.target;
+            setProduct({...product, [name]: value});
+        };
+
+        const newProduct = () => {
+            setSubmitted(false);
+        };
+
+        useEffect(() => {
+            if (currentId === "") {
+                setProduct({...initialStateAddForm});
+            } else {
+                getLinkById(currentId);
+            }
+        }, [currentId]);
+
 
         return (
             <div>
@@ -50,9 +59,8 @@ const AddProductCurd = () => {
                                     id="title"
                                     required
                                     value={product.title}
-                                    onChange={e => {
-                                        setProduct({...product, title: e.target.value});
-                                    }}
+                                    onChange={handleInputChange}
+
                                     name="title"
                                 />
                                 <span className="focus-border"></span>
@@ -66,10 +74,8 @@ const AddProductCurd = () => {
                                     id="price"
                                     required
                                     value={product.price}
-                                    onChange={e => {
-                                        // @ts-ignore
-                                        setProduct({...product, price: e.target.value});
-                                    }}
+                                    onChange={handleInputChange}
+
                                     name="price"
                                 />
                                 <span className="focus-border"></span>
@@ -83,9 +89,8 @@ const AddProductCurd = () => {
                                     id="description"
                                     required
                                     value={product.description}
-                                    onChange={e => {
-                                        setProduct({...product, description: e.target.value})
-                                    }}
+                                    onChange={handleInputChange}
+
                                     name="description"
                                 />
                                 <span className="focus-border"></span>
@@ -95,9 +100,9 @@ const AddProductCurd = () => {
                             <div className="pos-relative">
                                 <label className="form-label">category</label>
                                 <select className="effect-green"
-                                        onChange={e => {
-                                            setProduct({...product, category: e.target.value})
-                                        }}>
+                                        name="category"
+                                        onChange={handleInputChange}
+                                >
                                     {categories.map((category) =>
                                         <option value={product.category}>{category}</option>)}
                                 </select>
@@ -112,9 +117,8 @@ const AddProductCurd = () => {
                                     id="image"
                                     required
                                     value={product.image}
-                                    onChange={e => {
-                                        setProduct({...product, image: e.target.value})
-                                    }}
+                                    onChange={handleInputChange}
+
                                     name="image"
                                 />
                                 <span className="focus-border"></span>
@@ -122,7 +126,7 @@ const AddProductCurd = () => {
                             </div>
                             <div>
                                 <button onClick={handleSubmit}>
-                                    Submit
+                                    {currentId === "" ? "Save" : "Update"}
                                 </button>
                             </div>
                         </div>
