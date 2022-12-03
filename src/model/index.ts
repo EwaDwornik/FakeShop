@@ -19,6 +19,10 @@ export interface ProductNoFuture {
     title: string;
 }
 
+export interface addOrEditProps {
+    addOrEdit: (clickedItem: ProductNoFuture) => void;
+    currentId: string;
+}
 
 export interface ContextType {
     products: Product[];

@@ -3,11 +3,10 @@ import {categories, initialStateAddForm} from "../../services/utilities";
 import {productsCollection} from "../../services/firebase/firebase.utils";
 
 const AddProductCurd = ({addOrEdit, currentId}: any) => {
-
         const [product, setProduct] = useState(initialStateAddForm);
         const [submitted, setSubmitted] = useState(false);
 
-        const handleSubmit = async (e: any) => {
+            const handleSubmit = async (e: any) => {
             e.preventDefault();
             setSubmitted(true);
             addOrEdit(product);
@@ -25,6 +24,7 @@ const AddProductCurd = ({addOrEdit, currentId}: any) => {
             const {name, value} = e.target;
             setProduct({...product, [name]: value});
         };
+
 
         const newProduct = () => {
             setSubmitted(false);
@@ -56,11 +56,8 @@ const AddProductCurd = ({addOrEdit, currentId}: any) => {
                                 <input
                                     type="text"
                                     className="effect-green"
-                                    id="title"
-                                    required
                                     value={product.title}
                                     onChange={handleInputChange}
-
                                     name="title"
                                 />
                                 <span className="focus-border"></span>
@@ -71,11 +68,8 @@ const AddProductCurd = ({addOrEdit, currentId}: any) => {
                                 <input
                                     type="number"
                                     className="effect-green"
-                                    id="price"
-                                    required
                                     value={product.price}
                                     onChange={handleInputChange}
-
                                     name="price"
                                 />
                                 <span className="focus-border"></span>
@@ -86,11 +80,8 @@ const AddProductCurd = ({addOrEdit, currentId}: any) => {
                                 <input
                                     type="text"
                                     className="effect-green"
-                                    id="description"
-                                    required
                                     value={product.description}
                                     onChange={handleInputChange}
-
                                     name="description"
                                 />
                                 <span className="focus-border"></span>
@@ -102,9 +93,10 @@ const AddProductCurd = ({addOrEdit, currentId}: any) => {
                                 <select className="effect-green"
                                         name="category"
                                         onChange={handleInputChange}
+                                        value={product.category}
                                 >
                                     {categories.map((category) =>
-                                        <option value={product.category}>{category}</option>)}
+                                        <option value={category}>{category}</option>)}
                                 </select>
                                 <span className="focus-border"></span>
                             </div>
@@ -112,13 +104,10 @@ const AddProductCurd = ({addOrEdit, currentId}: any) => {
                             <div className="pos-relative">
                                 <label className="form-label">image</label>
                                 <input
-                                    type="text"
+                                    type="field"
                                     className="effect-green"
-                                    id="image"
-                                    required
                                     value={product.image}
                                     onChange={handleInputChange}
-
                                     name="image"
                                 />
                                 <span className="focus-border"></span>

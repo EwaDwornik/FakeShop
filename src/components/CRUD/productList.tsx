@@ -7,11 +7,9 @@ import {ProductNoFuture} from "../../model";
 const ProductList = () => {
     const {info} = useContext(Context)
     const [submitted, setSubmitted] = useState(false);
-    const [currentId, setCurrentId] = useState("");
+    const [currentId, setCurrentId] = useState<string>("");
 
     console.log(info);
-
-
 
     const addOrEdit = async (linkObject: ProductNoFuture) => {
         if (currentId === "") {
@@ -64,12 +62,11 @@ const ProductList = () => {
                                 <td>{product.description}</td>
                                 <td>{product.image}</td>
                                 <td>{product.price}</td>
-                                <td>{product.id}</td>
                                 <button onClick={() => {
                                     deleteProduct(product.id)
                                 }}>Delete
                                 </button>
-                                <button onClick={() => setCurrentId(product.id)}>✏</button>
+                                <button onClick={() => setCurrentId(product.id)}>Edit</button>
 
                             </tr>
                         )}

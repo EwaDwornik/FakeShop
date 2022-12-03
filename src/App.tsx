@@ -37,7 +37,7 @@ function App(props: any) {
 
     useEffect(() => {
         getData()
-    }, [])
+    }, [info])
 
 
     return (
