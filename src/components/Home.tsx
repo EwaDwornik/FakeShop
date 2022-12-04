@@ -4,7 +4,6 @@ import { ProductNoFuture} from "../model";
 import Drawer from "@mui/material/Drawer";
 import Cart from "./Cart/Cart";
 
-
 function Home() {
     const [cartItems, setCartItems] = useState<ProductNoFuture[]>([])
     const [cartOpen, setCartOpen] = useState(false);
