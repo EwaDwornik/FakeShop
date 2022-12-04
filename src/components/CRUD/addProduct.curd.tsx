@@ -6,7 +6,7 @@ const AddProductCurd = ({addOrEdit, currentId}: any) => {
         const [product, setProduct] = useState(initialStateAddForm);
         const [submitted, setSubmitted] = useState(false);
 
-            const handleSubmit = async (e: any) => {
+        const handleSubmit = async (e: any) => {
             e.preventDefault();
             setSubmitted(true);
             addOrEdit(product);
@@ -95,6 +95,8 @@ const AddProductCurd = ({addOrEdit, currentId}: any) => {
                                         onChange={handleInputChange}
                                         value={product.category}
                                 >
+                                    <option value="" selected>select a category</option>
+
                                     {categories.map((category) =>
                                         <option value={category}>{category}</option>)}
                                 </select>

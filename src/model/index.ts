@@ -1,15 +1,3 @@
-export interface Product {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    rating: { rate: number, count: number };
-    amount: number;
-}
-
-
 export interface ProductNoFuture {
     id: string;
     category: string;
@@ -17,6 +5,7 @@ export interface ProductNoFuture {
     image: string;
     price: number;
     title: string;
+    amountInCart: number;
 }
 
 export interface addOrEditProps {
@@ -25,8 +14,7 @@ export interface addOrEditProps {
 }
 
 export interface ContextType {
-    products: Product[];
-    info: ProductNoFuture[];
+    products: ProductNoFuture[];
 }
 
 export interface Range {
@@ -35,22 +23,22 @@ export interface Range {
 }
 
 export interface PropsCard {
-    product: Product;
-    handleAdd: (clickedItem: Product) => void;
+    product: ProductNoFuture;
+    handleAdd: (clickedItem: ProductNoFuture) => void;
 }
 
 export interface PropsCart {
-    cartItems: Product[];
-    addToCart: (clickedItem: Product) => void;
-    removeFromCart: (id: number) => void;
+    cartItems: ProductNoFuture[];
+    addToCart: (clickedItem: ProductNoFuture) => void;
+    removeFromCart: (id: string) => void;
 }
 
 export interface PropsItem {
-    item: Product
-    addToCart: (clickedItem: Product) => void;
-    removeFromCart: (id: number) => void;
+    item: ProductNoFuture
+    addToCart: (clickedItem: ProductNoFuture) => void;
+    removeFromCart: (id: string) => void;
 }
 
 export interface PropsCards {
-    handleAdd: (clickedItem: Product) => void;
+    handleAdd: (clickedItem: ProductNoFuture) => void;
 }

@@ -7,11 +7,11 @@ function CartItem({item, addToCart, removeFromCart}: PropsItem) {
             <div>{item.title}</div>
             <div className="info">
                 <p>Price: {item.price}$</p>
-                <p>Total: {(item.amount * item.price).toFixed(2)}$</p>
+                <p>Total: {(item.amountInCart * item.price).toFixed(2)}$</p>
             </div>
             <div className="buttons">
                 <button onClick={() => removeFromCart(item.id)}><h3>-</h3></button>
-                {item.amount}
+                {item.amountInCart}
                 <button onClick={() => addToCart(item)}><h3>+</h3></button>
             </div>
             <div>

@@ -1,32 +1,24 @@
 import React, {useContext, useState} from "react";
-import {Context} from "../context/context";
-import { PropsCards, Range} from "../model";
+import {Context} from "../../context/context";
+import {PropsCards, Range} from "../../model";
 
 import ProductCard from "./ProductCard";
+import {categories} from "../../services/utilities";
 
 const ProductCards = ({handleAdd}: PropsCards) => {
     const {products} = useContext(Context)
     const [selectCategory, setSelectCategory] = useState("")
 
-
-    const allCategoriesSet = new Set<string>();
-    products.forEach(product => allCategoriesSet.add(product.category));
-    const allCategories = Array.from(allCategoriesSet)
-
-    function sortCategory(event: any) {
-        event.preventDefault();
-        setSelectCategory(event.target.value)
-    }
-
     const initialRange: Range = {
         min: 0,
-        max: 5
+        max: 25
     }
     const [range, setRange] = useState(initialRange);
 
     const results = products.filter(product => product.category.includes(selectCategory)
-        && product.rating.rate > range.min && product.rating.rate < range.max
+        && product.price > range.min && product.price < range.max
     )
+
 
     return (
         <div>
@@ -35,16 +27,16 @@ const ProductCards = ({handleAdd}: PropsCards) => {
                     <label>category</label>
                     <select
                         className="form-home"
-                        onChange={sortCategory}
+                        onChange={((event: any) => setSelectCategory(event.target.value))}
                     >
                         <option value="" selected>all</option>
-                        {allCategories.map((cat) =>
-                            <option value={cat}>{cat}</option>
+                        {categories.map((category) =>
+                            <option value={category}>{category}</option>
                         )}
                     </select>
                 </div>
                 <div>
-                    <label>min rate:</label>
+                    <label>min price:</label>
                     <input
                         type='number'
                         min="0" max="5"
@@ -57,7 +49,7 @@ const ProductCards = ({handleAdd}: PropsCards) => {
                         }}/>
                 </div>
                 <div>
-                    <label>max rate:</label>
+                    <label>max price:</label>
                     <input
                         type="number"
                         min="0" max="5"

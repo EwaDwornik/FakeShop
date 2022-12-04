@@ -5,11 +5,11 @@ import {productsCollection} from "../../services/firebase/firebase.utils";
 import {ProductNoFuture} from "../../model";
 
 const ProductList = () => {
-    const {info} = useContext(Context)
+    const {products} = useContext(Context)
     const [submitted, setSubmitted] = useState(false);
     const [currentId, setCurrentId] = useState<string>("");
 
-    console.log(info);
+    console.log(products);
 
     const addOrEdit = async (linkObject: ProductNoFuture) => {
         if (currentId === "") {
@@ -36,7 +36,7 @@ const ProductList = () => {
 
     return (
         <div>
-            <AddProductCurd {...{ addOrEdit, currentId }}/>
+            <AddProductCurd {...{addOrEdit, currentId}}/>
             <div className="crudListTable">
                 {submitted ? (
                     <div>
@@ -54,9 +54,9 @@ const ProductList = () => {
                             <th>image</th>
                             <th>price</th>
                         </tr>
-                        {info.map((product, key) =>
+                        {products.map((product, key) =>
                             <tr>
-                                <td>{key}</td>
+                                <td>{key + 1}</td>
                                 <td>{product.category}</td>
                                 <td>{product.title}</td>
                                 <td>{product.description}</td>

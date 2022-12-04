@@ -1,11 +1,11 @@
 import CartItem from "./CartItem";
-import {Product, PropsCart} from "../../model";
+import { ProductNoFuture, PropsCart} from "../../model";
 
 
 function Cart ({cartItems, addToCart, removeFromCart}: PropsCart) {
 
-    const total = (items: Product[]) =>
-        items.reduce((ack: number, item) => ack + item.amount * item.price, 0)
+    const total = (items: ProductNoFuture[]) =>
+        items.reduce((ack: number, item) => ack + item.amountInCart * item.price, 0)
 
     return (
         <div className="shoppingCart">

@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import './styles/globals.scss';
-import {Product, ProductNoFuture} from "./model";
+import {ProductNoFuture} from "./model";
 import {Context} from "./context/context";
 import {productsCollection} from "./services/firebase/firebase.utils";
 
 function App(props: any) {
-    const [products, setProducts] = useState<Product[]>([]);
-    const [info, setInfo] = useState<ProductNoFuture[]>([]);
-
+    const [products, setProducts] = useState<ProductNoFuture[]>([]);
 
     const getProducts = async () => {
         let tempProducts: any[] = []
@@ -16,7 +14,7 @@ function App(props: any) {
                 tempProducts = [...tempProducts, doc.data()]
             })
         }).then(() => {
-            setInfo(tempProducts)
+            setProducts(tempProducts)
         })
     }
 
@@ -25,25 +23,11 @@ function App(props: any) {
     }, [])
 
 
-    //fetching data from API
-    const getData = async () => {
-        // const response = await fetch("https://fakestoreapi.com/products/");
-        // const data = await response.json();
-        // setProducts(data.results)
-        fetch('https://fakestoreapi.com/products')
-            .then(res => res.json())
-            .then(json => setProducts(json))
-    }
-
-    useEffect(() => {
-        getData()
-    }, [info])
-
 
     return (
         <div>
             <Context.Provider value={{
-                products, info
+                products
             }}>
                 {/* sharing data with all children */}
                 {props.children}
