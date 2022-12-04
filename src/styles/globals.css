@@ -1,11 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap");
-.select-option {
+.select-options {
   margin: 3%;
   display: flex;
   justify-content: center;
+  width: 50%;
 }
-.select-option div {
-  margin: 2%;
+
+.price-slider {
+  width: 50%;
 }
 
 .products-cards {
@@ -60,19 +62,6 @@
   justify-content: center;
   align-items: center;
   color: white;
-}
-
-.form-home {
-  padding: 5%;
-  margin: 5%;
-  min-width: 80px;
-  min-height: 25px;
-  border-radius: 7px;
-  border: purple solid 1px;
-}
-
-.form-home:focus {
-  outline: 0;
 }
 
 .shoppingCart {
@@ -161,6 +150,72 @@
 .crudListTable table th, .crudListTable table td {
   border: 1px solid black;
   padding: 1%;
+}
+
+#first {
+  background: url("../../images/boys.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#second {
+  background: url("../../images/happy_dude.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#first, #second {
+  width: 100%;
+  height: 800px;
+  perspective: 1px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transform: translateZ(-1px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: purple;
+}
+#first div, #second div {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: purple;
+  padding: 1%;
+}
+#first p, #second p {
+  font-size: 4vw;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 2%;
+}
+
+.price-slider {
+  width: 50%;
+}
+
+.products-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 2%;
+  flex-direction: row;
+}
+
+.form-home {
+  padding: 5%;
+  margin: 5%;
+  min-width: 80px;
+  min-height: 25px;
+  border-radius: 7px;
+  border: purple solid 1px;
+}
+
+.form-home:focus {
+  outline: 0;
 }
 
 body {

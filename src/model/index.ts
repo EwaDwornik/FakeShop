@@ -17,10 +17,6 @@ export interface ContextType {
     products: ProductNoFuture[];
 }
 
-export interface Range {
-    min: number,
-    max: number
-}
 
 export interface PropsCard {
     product: ProductNoFuture;

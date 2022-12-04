@@ -1,12 +1,13 @@
-.select-option {
+.select-options {
   margin: 3%;
   display: flex;
   justify-content: center;
-  div{
-    margin: 2%;
-  }
+  width: 50%;
 }
 
+.price-slider {
+  width: 50%;
+}
 
 .products-cards {
   display: flex;
@@ -68,15 +69,3 @@
   }
 }
 
-.form-home {
-  padding: 5%;
-  margin: 5%;
-  min-width: 80px;
-  min-height: 25px;
-  border-radius: 7px;
-  border: $main-color solid 1px;
-}
-
-.form-home:focus{
-  outline: 0;
-}

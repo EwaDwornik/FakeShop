@@ -5,8 +5,9 @@
 @import "components/home";
 @import "components/addProduct";
 @import "components/crud";
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+@import "components/productCards";
 
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 body {
   font-family: 'Raleway', sans-serif;
   text-align: center;
@@ -15,6 +16,7 @@ body {
     font-size: 1.2vw;
   }
 }
+
 
 button {
   border: none ;
