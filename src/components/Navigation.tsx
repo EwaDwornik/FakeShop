@@ -1,9 +1,11 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {routes} from "../services/routes";
+import Drawer from "@mui/material/Drawer";
+import Cart from "./Cart/Cart";
 
 
-function Navigation() {
+const Navigation = () => {
     return (
         <header className="navigation">
             <div className="navigation-links">
@@ -11,6 +13,7 @@ function Navigation() {
                 <Link to={routes.addProduct}>Add product</Link>
                 <Link to={routes.contact}>Contact</Link>
                 <Link to={routes.login}>Login</Link>
+
             </div>
         </header>
     )

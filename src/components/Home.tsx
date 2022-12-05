@@ -5,8 +5,15 @@ import Drawer from "@mui/material/Drawer";
 import Cart from "./Cart/Cart";
 
 const Home = () => {
-    const [cartItems, setCartItems] = useState<ProductNoFuture[]>([])
     const [cartOpen, setCartOpen] = useState(false);
+    const [cartItems, setCartItems] = useState<ProductNoFuture[]>( []);
+
+    localStorage.setItem('items', JSON.stringify(cartItems));
+
+    // @ts-ignore
+    const storedItems = JSON.parse(localStorage.getItem('items'))
+
+    console.log(storedItems)
 
     const handleAdd = (clickedItem: ProductNoFuture) => {
         setCartItems(previous => {
@@ -20,7 +27,6 @@ const Home = () => {
             return [...previous, {...clickedItem, amountInCart: 1}]
         })
     }
-
     const getTotalItems = (items: ProductNoFuture[]) => items.reduce((ack: number, item) => ack + item.amountInCart, 0);
 
     const handleRemove = (id: string) => {
@@ -39,13 +45,12 @@ const Home = () => {
     return (
         <div>
             <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
-                <Cart cartItems={cartItems}
+                <Cart cartItems={storedItems}
                       addToCart={handleAdd}
                       removeFromCart={handleRemove}/>
             </Drawer>
-
             <button className="cart-open" onClick={() => setCartOpen(true)}>
-                Cart {getTotalItems(cartItems)}
+                Cart {getTotalItems(storedItems)}
             </button>
             <ProductCards handleAdd={handleAdd} />
         </div>
