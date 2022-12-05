@@ -218,6 +218,13 @@
   outline: 0;
 }
 
+.navigation-links {
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 body {
   font-family: "Raleway", sans-serif;
   text-align: center;

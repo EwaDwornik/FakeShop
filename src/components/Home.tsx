@@ -4,7 +4,7 @@ import { ProductNoFuture} from "../model";
 import Drawer from "@mui/material/Drawer";
 import Cart from "./Cart/Cart";
 
-function Home() {
+const Home = () => {
     const [cartItems, setCartItems] = useState<ProductNoFuture[]>([])
     const [cartOpen, setCartOpen] = useState(false);
 
@@ -47,7 +47,7 @@ function Home() {
             <button className="cart-open" onClick={() => setCartOpen(true)}>
                 Cart {getTotalItems(cartItems)}
             </button>
-            <ProductCards handleAdd={handleAdd}/>
+            <ProductCards handleAdd={handleAdd} />
         </div>
     )
 }

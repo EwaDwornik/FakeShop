@@ -1,40 +1,34 @@
-[debug] [2022-11-27T13:30:17.103Z] ----------------------------------------------------------------------
-[debug] [2022-11-27T13:30:17.103Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
-[debug] [2022-11-27T13:30:17.104Z] CLI Version:   11.16.1
-[debug] [2022-11-27T13:30:17.104Z] Platform:      darwin
-[debug] [2022-11-27T13:30:17.104Z] Node Version:  v16.18.0
-[debug] [2022-11-27T13:30:17.105Z] Time:          Sun Nov 27 2022 13:30:17 GMT+0000 (Greenwich Mean Time)
-[debug] [2022-11-27T13:30:17.105Z] ----------------------------------------------------------------------
+[debug] [2022-12-04T21:38:44.606Z] ----------------------------------------------------------------------
+[debug] [2022-12-04T21:38:44.607Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2022-12-04T21:38:44.607Z] CLI Version:   11.16.1
+[debug] [2022-12-04T21:38:44.607Z] Platform:      darwin
+[debug] [2022-12-04T21:38:44.607Z] Node Version:  v16.18.0
+[debug] [2022-12-04T21:38:44.608Z] Time:          Sun Dec 04 2022 21:38:44 GMT+0000 (Greenwich Mean Time)
+[debug] [2022-12-04T21:38:44.608Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2022-11-27T13:30:17.141Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2022-11-27T13:30:17.141Z] > authorizing via signed-in user (ewaannadwornik@gmail.com)
-[debug] [2022-11-27T13:30:17.141Z] [iam] checking project no-future-c6f84 for permissions ["firebase.projects.get"]
-[debug] [2022-11-27T13:30:17.142Z] > refreshing access token with scopes: []
-[debug] [2022-11-27T13:30:17.143Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2022-11-27T13:30:17.143Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2022-11-27T13:30:17.368Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2022-11-27T13:30:17.368Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2022-11-27T13:30:17.391Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/no-future-c6f84:testIamPermissions [none]
-[debug] [2022-11-27T13:30:17.391Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/no-future-c6f84:testIamPermissions x-goog-quota-user=projects/no-future-c6f84
-[debug] [2022-11-27T13:30:17.391Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/no-future-c6f84:testIamPermissions {"permissions":["firebase.projects.get"]}
-[debug] [2022-11-27T13:30:18.166Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/no-future-c6f84:testIamPermissions 200
-[debug] [2022-11-27T13:30:18.166Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/no-future-c6f84:testIamPermissions {"permissions":["firebase.projects.get"]}
-[debug] [2022-11-27T13:30:18.168Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/no-future-c6f84 [none]
-[debug] [2022-11-27T13:30:18.505Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/no-future-c6f84 200
-[debug] [2022-11-27T13:30:18.506Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/no-future-c6f84 {"projectId":"no-future-c6f84","projectNumber":"312683072992","displayName":"No Future","name":"projects/no-future-c6f84","resources":{"hostingSite":"no-future-c6f84","realtimeDatabaseInstance":"no-future-c6f84-default-rtdb"},"state":"ACTIVE","etag":"1_f926e74b-a6d5-4386-af19-48e17f39c35d"}
+[debug] [2022-12-04T21:38:44.638Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-12-04T21:38:44.638Z] > authorizing via signed-in user (ewaannadwornik@gmail.com)
+[debug] [2022-12-04T21:38:44.638Z] [iam] checking project no-future-c6f84 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-12-04T21:38:44.639Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/no-future-c6f84:testIamPermissions [none]
+[debug] [2022-12-04T21:38:44.639Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/no-future-c6f84:testIamPermissions x-goog-quota-user=projects/no-future-c6f84
+[debug] [2022-12-04T21:38:44.639Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/no-future-c6f84:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-04T21:38:45.010Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/no-future-c6f84:testIamPermissions 200
+[debug] [2022-12-04T21:38:45.010Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/no-future-c6f84:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-04T21:38:45.011Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/no-future-c6f84 [none]
+[debug] [2022-12-04T21:38:45.369Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/no-future-c6f84 200
+[debug] [2022-12-04T21:38:45.369Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/no-future-c6f84 {"projectId":"no-future-c6f84","projectNumber":"312683072992","displayName":"No Future","name":"projects/no-future-c6f84","resources":{"hostingSite":"no-future-c6f84","realtimeDatabaseInstance":"no-future-c6f84-default-rtdb","storageBucket":"no-future-c6f84.appspot.com","locationId":"europe-central2"},"state":"ACTIVE","etag":"1_ddffe9ea-5c7f-4d52-9ed7-34ea02bc12e0"}
 [info] 
-[info] === Serving from '/Users/ewok/Desktop/no-future-shop'...
+[info] === Deploying to 'no-future-c6f84'...
 [info] 
-[debug] [2022-11-27T13:30:18.511Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/no-future-c6f84/sites 
-[debug] [2022-11-27T13:30:19.476Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/no-future-c6f84/sites 200
-[debug] [2022-11-27T13:30:19.476Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/no-future-c6f84/sites {"sites":[{"name":"projects/no-future-c6f84/sites/no-future-c6f84","defaultUrl":"https://no-future-c6f84.web.app","appId":"1:312683072992:web:b587da428536de3b00ef85","type":"DEFAULT_SITE"}]}
-[debug] [2022-11-27T13:30:19.477Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/no-future-c6f84/webApps/1:312683072992:web:b587da428536de3b00ef85/config [none]
-[debug] [2022-11-27T13:30:20.424Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/no-future-c6f84/webApps/1:312683072992:web:b587da428536de3b00ef85/config 200
-[debug] [2022-11-27T13:30:20.424Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/no-future-c6f84/webApps/1:312683072992:web:b587da428536de3b00ef85/config {"projectId":"no-future-c6f84","appId":"1:312683072992:web:b587da428536de3b00ef85","databaseURL":"https://no-future-c6f84-default-rtdb.firebaseio.com","storageBucket":"no-future-c6f84.appspot.com","apiKey":"AIzaSyCPAFFIzE2rCtcaRV2KZPIrtQwqFN4wsog","authDomain":"no-future-c6f84.firebaseapp.com","messagingSenderId":"312683072992","measurementId":"G-ZXM808NVTY"}
-[debug] [2022-11-27T13:30:20.431Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/no-future-c6f84 [none]
-[debug] [2022-11-27T13:30:20.748Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/no-future-c6f84 200
-[debug] [2022-11-27T13:30:20.749Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/no-future-c6f84 {"projectId":"no-future-c6f84","projectNumber":"312683072992","displayName":"No Future","name":"projects/no-future-c6f84","resources":{"hostingSite":"no-future-c6f84","realtimeDatabaseInstance":"no-future-c6f84-default-rtdb"},"state":"ACTIVE","etag":"1_f926e74b-a6d5-4386-af19-48e17f39c35d"}
-[info] i  hosting[no-future-c6f84]: Serving hosting files from: yes {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1myes\u001b[22m"}}
-[info] ✔  hosting[no-future-c6f84]: Local server: http://localhost:5002 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5002\u001b[22m\u001b[24m"}}
-[info] i  hosting: 127.0.0.1 - - [27/Nov/2022:13:30:22 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [27/Nov/2022:13:30:22 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15\""}}
-[info] i  hosting: 127.0.0.1 - - [27/Nov/2022:13:30:22 +0000] "GET /__/firebase/init.js?useEmulator=true HTTP/1.1" 200 - "http://localhost:5002/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [27/Nov/2022:13:30:22 +0000] \"GET /__/firebase/init.js?useEmulator=true HTTP/1.1\" 200 - \"http://localhost:5002/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15\""}}
+[info] i  deploying hosting 
+[debug] [2022-12-04T21:38:45.374Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/no-future-c6f84/versions [none]
+[debug] [2022-12-04T21:38:45.374Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/no-future-c6f84/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-12-04T21:38:46.689Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/no-future-c6f84/versions 200
+[debug] [2022-12-04T21:38:46.689Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/no-future-c6f84/versions {"name":"projects/312683072992/sites/no-future-c6f84/versions/491cfbf6993f330b","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[no-future-c6f84]: beginning deploy... 
+[info] i  hosting[no-future-c6f84]: found 1 files in yes 
+[debug] [2022-12-04T21:38:46.691Z] [hosting] uploading with 200 concurrency
+[debug] [2022-12-04T21:38:46.693Z] [hosting] hash cache [eWVz] stored for 1 files
+[debug] [2022-12-04T21:38:46.693Z] [hosting][hash queue][FINAL] {"max":0,"min":0,"avg":0,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":1}
+[debug] [2022-12-04T21:38:46.693Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/312683072992/sites/no-future-c6f84/versions/491cfbf6993f330b:populateFiles [none]
+[debug] [2022-12-04T21:38:46.693Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/312683072992/sites/no-future-c6f84/versions/491cfbf6993f330b:populateFiles {"files":{"/index.html":"b4db78ef31f830735c270789fab621b933aef4a6e7ffab43cc81c4e644e9801c"}}
