@@ -1,9 +1,7 @@
 import React from "react";
-import { PropsCard} from "../../model";
+import {PropsCard} from "../../model";
 
 const ProductCard = ({product, handleAdd}: PropsCard) => {
-
-
 
     return (
         <div className="product-card">
@@ -14,7 +12,7 @@ const ProductCard = ({product, handleAdd}: PropsCard) => {
             <div>{product.description}</div>
             <div>
                 <div><h3>{product.price} $</h3></div>
-                <div><h3>{product.category} $</h3></div>
+                <div><h3>{product.category}</h3></div>
                 <button onClick={() => handleAdd(product)}>Add to cart</button>
             </div>
         </div>)

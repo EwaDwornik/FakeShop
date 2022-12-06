@@ -15,6 +15,12 @@ export interface addOrEditProps {
 
 export interface ContextType {
     products: ProductNoFuture[];
+    cartOpen: boolean;
+    setCartOpen: (value: boolean) => void;
+    handleAdd: (value: ProductNoFuture) => void;
+    getTotalItems: any;
+    handleRemove: (value: string) => void;
+    storedItems: ProductNoFuture[];
 }
 
 
