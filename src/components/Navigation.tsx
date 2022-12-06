@@ -4,6 +4,7 @@ import {routes} from "../services/routes";
 import Drawer from "@mui/material/Drawer";
 import Cart from "./Cart/Cart";
 import {Context} from "../context/context";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Navigation = () => {
     const {cartOpen, setCartOpen, storedItems, getTotalItems, handleAdd, handleRemove} = useContext(Context)
@@ -16,13 +17,15 @@ const Navigation = () => {
                       removeFromCart={handleRemove}/>
             </Drawer>
             <div className="navigation-links">
-                <Link  to={routes.home}>Home</Link>
+                <Link to={routes.home}>Home</Link>
                 <Link to={routes.addProduct}>Add product</Link>
                 <Link to={routes.contact}>Contact</Link>
                 <Link to={routes.login}>Login</Link>
-                <button className="cart-open" onClick={() => setCartOpen(true)}>
-                    Cart: {getTotalItems(storedItems)}
-                </button>
+
+                <div className="cart-open" onClick={() => setCartOpen(true)}>
+                    <ShoppingCartIcon/>
+                   {getTotalItems(storedItems)}
+                </div>
             </div>
         </header>
     )

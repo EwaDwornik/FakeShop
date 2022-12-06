@@ -10,13 +10,6 @@
   background-size: $size;
 }
 
-$parallax-height: 1000px;
-$center-margin: 0px auto;
-
-$parallax-height: 1000px;
-$center-margin: 0px auto;
-$theme: #2e3738;
-
 #first {
   @include parallax-background("../../images/boys.jpg");
 }
