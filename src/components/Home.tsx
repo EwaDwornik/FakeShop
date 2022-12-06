@@ -8,8 +8,14 @@ const Home = () => {
 
     return (
         <div>
+            <div id="first">
+                <p className="animate__animated animate__backInLeft">Welcome to No Future!</p>
+            </div>
+            <About/>
+            <div id="second"></div>
             <ProductCards handleAdd={handleAdd}/>
-            <About />
+            <div id="second"></div>
+
         </div>
     )
 }

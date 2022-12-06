@@ -18,6 +18,7 @@ const Navigation = () => {
             </Drawer>
             <div className="navigation-links">
                 <Link to={routes.home}>Home</Link>
+                <Link to={routes.shop}>Shop</Link>
                 <Link to={routes.addProduct}>Add product</Link>
                 <Link to={routes.contact}>Contact</Link>
                 <Link to={routes.login}>Login</Link>

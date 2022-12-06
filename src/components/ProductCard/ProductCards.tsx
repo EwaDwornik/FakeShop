@@ -26,9 +26,7 @@ const ProductCards = ({handleAdd}: PropsCards) => {
     )
     return (
         <div>
-            <div id="first">
-                <p className="animate__animated animate__backInLeft">Welcome to No Future!</p>
-            </div>
+
             <div className="select-options">
                 <div>
                     <label>category</label>
@@ -60,7 +58,7 @@ const ProductCards = ({handleAdd}: PropsCards) => {
                     <ProductCard product={product} handleAdd={handleAdd}/>
                 )}
             </div>
-            <div id="second"></div>
+
         </div>
 
     )

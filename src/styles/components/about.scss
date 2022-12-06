@@ -11,9 +11,10 @@
     transition: all 1s ease-in-out;
     height: 75vmin;
     position: relative;
-    color: white;
     .cardHead {
       background: $main-color;
+      color: #ECEFF1;
+
       padding: 0.5em;
       transform: rotate(-90deg);
       transform-origin: 0 0;
@@ -32,7 +33,6 @@
       .cardHead {
         text-align: center;
         top: calc(100% - 2em);
-        color: white;
         font-size: 2em;
         transform: rotate(0deg) skew(-5deg);
       }
@@ -43,8 +43,6 @@
       object-fit: cover;
       transition: all 1s ease-in-out;
     }
-    &:not(:nth-child(5)) {
-      margin-right: 1em;
-    }
+
   }
 }

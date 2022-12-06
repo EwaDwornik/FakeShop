@@ -1,49 +1,4 @@
-@mixin parallax-background($file) {
-  background: url($file) no-repeat center center fixed;
-  @include background-size(cover);
-}
 
-@mixin background-size($size) {
-  -webkit-background-size: $size;
-  -moz-background-size: $size;
-  -o-background-size: $size;
-  background-size: $size;
-}
-
-#first {
-  @include parallax-background("../../images/boys.jpg");
-}
-
-#second {
-  @include parallax-background("../../images/happy_dude.jpg");
-}
-
-#first, #second {
-  width: 100%;
-  height: 800px;
-  perspective: 1px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  transform: translateZ(-1px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: $main-color;
-
-  div {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    color: $main-color;
-    padding: 1%;
-  }
-
-  p {
-    font-size: 4vw;
-    background-color: rgba(255,255,255,.6);
-    padding: 2%;
-  }
-}
 
 
 .price-slider {
