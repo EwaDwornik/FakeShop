@@ -8,7 +8,7 @@ export interface ProductNoFuture {
     amountInCart: number;
 }
 
-export interface addOrEditProps {
+export interface AddOrEditProps {
     addOrEdit: (clickedItem: ProductNoFuture) => void;
     currentId: string;
 }
