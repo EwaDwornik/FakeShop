@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {Context} from "../../context/context";
+import { Context} from "../../context/context";
 import AddProductCurd from "./addProduct.curd";
 import {productsCollection} from "../../services/firebase/firebase.utils";
 import {ProductNoFuture} from "../../model";

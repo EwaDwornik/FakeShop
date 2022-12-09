@@ -3,6 +3,13 @@ import {ContextType} from "../model";
 
 
 export const Context = createContext<ContextType>({
-    products: []
-})
-
+        products: [],
+        cartOpen: false,
+        setCartOpen: () => {
+        },
+        handleAdd: () => [],
+        getTotalItems: 0,
+        handleRemove: () => [],
+        storedItems: []
+    }
+)

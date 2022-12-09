@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {categories, initialStateAddForm} from "../../services/utilities";
 import {productsCollection} from "../../services/firebase/firebase.utils";
+import {AddOrEditProps} from "../../model";
 
-const AddProductCurd = ({addOrEdit, currentId}: any) => {
+const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
         const [product, setProduct] = useState(initialStateAddForm);
         const [submitted, setSubmitted] = useState(false);
 
@@ -13,7 +14,7 @@ const AddProductCurd = ({addOrEdit, currentId}: any) => {
             setProduct({...initialStateAddForm});
         };
 
-        const getLinkById = async (id: any) => {
+        const getLinkById = async (id: string) => {
             const doc = await productsCollection.doc(id).get();
             console.log(doc.data());
             // @ts-ignore
@@ -95,8 +96,6 @@ const AddProductCurd = ({addOrEdit, currentId}: any) => {
                                         onChange={handleInputChange}
                                         value={product.category}
                                 >
-                                    <option value="" selected>select a category</option>
-
                                     {categories.map((category) =>
                                         <option value={category}>{category}</option>)}
                                 </select>

@@ -4,7 +4,6 @@ import {PropsCards} from "../../model";
 import Slider from '@mui/material/Slider';
 import ProductCard from "./ProductCard";
 import {categories} from "../../services/utilities";
-import 'animate.css';
 
 const initialRange: number[] = [1, 30]
 
@@ -27,9 +26,7 @@ const ProductCards = ({handleAdd}: PropsCards) => {
     )
     return (
         <div>
-            <div id="first">
-                <p className="animate__animated animate__backInLeft">Welcome to No Future!</p>
-            </div>
+
             <div className="select-options">
                 <div>
                     <label>category</label>
@@ -44,8 +41,7 @@ const ProductCards = ({handleAdd}: PropsCards) => {
                     </select>
 
                 </div>
-                <div className="price-slider"
-                >
+                <div className="price-slider">
                     <label>price range: {range[0]} - {range[1]} euro</label>
                     <Slider
                         getAriaLabel={() => 'Price range'}
@@ -62,7 +58,7 @@ const ProductCards = ({handleAdd}: PropsCards) => {
                     <ProductCard product={product} handleAdd={handleAdd}/>
                 )}
             </div>
-            <div id="second"></div>
+
         </div>
 
     )

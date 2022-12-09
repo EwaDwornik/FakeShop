@@ -92,11 +92,45 @@
   width: 20%;
 }
 
-.cart-open {
-  position: fixed;
-  z-index: 5;
-  right: 20px;
-  top: 20px;
+#first {
+  background: url("../../images/boys.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#second {
+  background: url("../../images/happy_dude.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#first, #second {
+  width: 100%;
+  height: 800px;
+  perspective: 1px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transform: translateZ(-1px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: purple;
+}
+#first div, #second div {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: purple;
+  padding: 1%;
+}
+#first p, #second p {
+  font-size: 4vw;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 2%;
 }
 
 .formAddProduct {
@@ -152,47 +186,6 @@
   padding: 1%;
 }
 
-#first {
-  background: url("../../images/boys.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-#second {
-  background: url("../../images/happy_dude.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-#first, #second {
-  width: 100%;
-  height: 800px;
-  perspective: 1px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  transform: translateZ(-1px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: purple;
-}
-#first div, #second div {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  color: purple;
-  padding: 1%;
-}
-#first p, #second p {
-  font-size: 4vw;
-  background-color: rgba(255, 255, 255, 0.6);
-  padding: 2%;
-}
-
 .price-slider {
   width: 50%;
 }
@@ -219,16 +212,76 @@
 }
 
 .navigation-links {
+  position: fixed;
+  top: 0;
+  z-index: 50;
+  width: 100%;
   height: 70px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: purple;
+}
+.navigation-links a, .navigation-links div {
+  text-decoration: none;
+  font-size: clamp(17px, 1.5vw, 25px);
+  transition: font-size 0.5s ease;
+  color: #ECEFF1;
+}
+.navigation-links a:hover, .navigation-links div:hover {
+  font-size: clamp(21px, 2vw, 30px);
+}
+
+.noFutureGallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10vmin;
+  overflow: hidden;
+  transform: skew(5deg);
+}
+.noFutureGallery .card {
+  flex: 1;
+  transition: all 1s ease-in-out;
+  height: 75vmin;
+  position: relative;
+}
+.noFutureGallery .card .cardHead {
+  background: purple;
+  color: #ECEFF1;
+  padding: 0.5em;
+  transform: rotate(-90deg);
+  transform-origin: 0 0;
+  transition: all 0.5s ease-in-out;
+  min-width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 1em;
+  white-space: nowrap;
+}
+.noFutureGallery .card:hover {
+  flex-grow: 10;
+}
+.noFutureGallery .card:hover .cardHead {
+  text-align: center;
+  top: calc(100% - 2em);
+  font-size: 2em;
+  transform: rotate(0deg) skew(-5deg);
+}
+.noFutureGallery .card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 1s ease-in-out;
 }
 
 body {
   font-family: "Raleway", sans-serif;
   text-align: center;
   font-size: 0.8vw;
+  margin-top: 70px;
 }
 body h4 {
   font-size: 1.2vw;
