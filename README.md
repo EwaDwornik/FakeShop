@@ -1,3 +1,15 @@
+React project written in Typescript.
+
+Technologies used in project so far. Project is in progress.
+
+- React
+- React-Router
+- Formik
+- Yup
+- Firebase
+- Firestore
+- Material UI
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

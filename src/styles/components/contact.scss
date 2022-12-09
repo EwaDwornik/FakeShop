@@ -1,0 +1,46 @@
+.contact-background {
+  background-color: $main-color;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 30px;
+  img {
+    height: 70px;
+  }
+  div {
+    margin: 5%;
+  }
+  a {
+    color: white;
+
+  }
+}
+
+.contact-box {
+  background: url("../../images/Ewa.jpg") no-repeat center #eee;
+  background-size:100%;
+  display: flex;
+  padding: 5%;
+  border: 1px solid $main-color;
+  justify-content: space-between;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 15px;
+  color: $main-color;
+  background-color: rgba(255,255,255,.6);
+  padding: 5%;
+  div input, textarea, button {
+    width: 300px;
+    height: 30px;
+    margin-bottom: 5%;
+    border: 1px solid $main-color;
+  }
+
+}
+

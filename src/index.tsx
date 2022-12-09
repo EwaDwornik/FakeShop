@@ -10,6 +10,7 @@ import ProductList from "./components/CRUD/productList";
 import {routes} from "./services/routes";
 import Navigation from "./components/Navigation";
 import Shop from "./components/Shop";
+import Contact from "./components/Contact";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -23,6 +24,7 @@ root.render(
                 <Route path={routes.home} element={<Home/>}/>
                 <Route path={routes.addProduct} element={<ProductList/>}/>
                 <Route path={routes.shop} element={<Shop/>}/>
+                <Route path={routes.contact} element={<Contact/>}/>
             </Routes>
         </App>
     </BrowserRouter>

@@ -44,3 +44,11 @@ export interface PropsItem {
 export interface PropsCards {
     handleAdd: (clickedItem: ProductNoFuture) => void;
 }
+
+
+export interface ContactValues {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+}

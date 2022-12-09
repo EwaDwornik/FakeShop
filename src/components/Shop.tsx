@@ -8,7 +8,10 @@ const Shop = () => {
 
     return (
         <div>
-            <ProductCards handleAdd={handleAdd} />
+            <div id="third">
+            </div>
+            <ProductCards handleAdd={handleAdd}/>
+            <div id="third"></div>
         </div>
     )
 }
