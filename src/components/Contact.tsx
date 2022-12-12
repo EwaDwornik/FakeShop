@@ -16,30 +16,21 @@ const ContactSchema = Yup.object().shape({
     message: Yup.string().min(20, 'Too short').required('Required'),
 });
 
-const initialValues = {
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-}
 
 // Simple contact page.
 function Contact() {
 
-    var templateParams = {
-        initialValues
-    };
+    const templateParams = {
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    }
 
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-        .then(function (response: any) {
-            console.log('SUCCESS!', response.status, response.text);
-        }, function (error: any) {
-            console.log('FAILED...', error);
-        });
     return (
         <div>
             <div className="contact-background">
-                <div><a href="https://www.facebook.com/nofutureyoga" target="_blank"><img src={facebook}></img></a>
+                <div><a href="https://www.facebook.com/nofutureyoga" target="_blank"><img src={facebook} alt={facebook}></img></a>
                 </div>
                 <div><a href="mailto: ewa@nofuture.yoga">ewa@nofuture.yoga
                 </a>
@@ -51,19 +42,22 @@ function Contact() {
 
                 </div>
                 <Formik
-                    initialValues={{
-                        name: '',
-                        email: '',
-                        subject: '',
-                        message: ''
-                    }}
+                    initialValues={templateParams}
                     validationSchema={ContactSchema}
                     onSubmit={(
                         values: ContactValues,
                         {setSubmitting}: FormikHelpers<ContactValues>
                     ) => {
+                        // @ts-ignore
+                        emailjs.send(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID , values, process.env.REACT_APP_USER_ID)
+                            .then(function(response) {
+                                console.log('SUCCESS!', response.status, response.text);
+                            }, function(error) {
+                                console.log('FAILED...', error);
+                            });
+
                         setTimeout(() => {
-                            alert(JSON.stringify(values, null, 2));
+                            alert("your message has been sent! We will answer as soon as possible" );
                             setSubmitting(false);
                         }, 500);
                     }}
@@ -123,6 +117,7 @@ function Contact() {
 }
 
 export default Contact;
+
 
 
 

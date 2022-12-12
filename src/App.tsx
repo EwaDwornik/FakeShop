@@ -5,7 +5,7 @@ import {productsCollection} from "./services/firebase/firebase.utils";
 import {Context} from "./context/context";
 import 'animate.css';
 
-function App(props: any) {
+const App = (props: any) => {
     const [products, setProducts] = useState<ProductNoFuture[]>([]);
     const [cartOpen, setCartOpen] = useState(false);
     const [cartItems, setCartItems] = useState<ProductNoFuture[]>( []);
