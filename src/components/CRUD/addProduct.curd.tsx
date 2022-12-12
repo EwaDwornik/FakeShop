@@ -41,7 +41,7 @@ const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
 
 
         return (
-            <div>
+            <div className="addProductBox">
                 <div className="formAddProduct">
                     {submitted ? (
                         <div>
@@ -56,7 +56,7 @@ const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
                                 <label className="form-label">Title</label>
                                 <input
                                     type="text"
-                                    className="effect-green"
+                                    className="effect-underline"
                                     value={product.title}
                                     onChange={handleInputChange}
                                     name="title"
@@ -68,7 +68,7 @@ const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
                                 <label className="form-label">Price in euro</label>
                                 <input
                                     type="number"
-                                    className="effect-green"
+                                    className="effect-underline"
                                     value={product.price}
                                     onChange={handleInputChange}
                                     name="price"
@@ -80,7 +80,7 @@ const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
                                 <label className="form-label">description</label>
                                 <input
                                     type="text"
-                                    className="effect-green"
+                                    className="effect-underline"
                                     value={product.description}
                                     onChange={handleInputChange}
                                     name="description"
@@ -91,7 +91,7 @@ const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
 
                             <div className="pos-relative">
                                 <label className="form-label">category</label>
-                                <select className="effect-green"
+                                <select className="effect-underline"
                                         name="category"
                                         onChange={handleInputChange}
                                         value={product.category}
@@ -106,7 +106,7 @@ const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
                                 <label className="form-label">image</label>
                                 <input
                                     type="field"
-                                    className="effect-green"
+                                    className="effect-underline"
                                     value={product.image}
                                     onChange={handleInputChange}
                                     name="image"

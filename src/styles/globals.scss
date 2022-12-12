@@ -49,6 +49,36 @@ button:hover {
   outline: none;
 }
 
+
+.pos-relative {
+  position: relative;
+  display: grid;
+  align-content: start;
+  margin-bottom: 5%;
+}
+
+.effect-underline {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.effect-underline ~ .focus-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: $main-color;
+  transition: 0.4s;
+}
+
+.effect-underline:focus ~ .effect-underline {
+  width: 100%;
+  transition: 0.4s;
+}
+
+
+
 @media only screen and (max-width: 700px) {
   body {
     font-size: 2.5vw;

@@ -8,7 +8,7 @@ export const initialStateAddForm: ProductNoFuture = {
     category: "",
     description: "",
     image: "",
-    price: 0.1,
+    price: 10,
     title: "",
     amountInCart: 0,
 };

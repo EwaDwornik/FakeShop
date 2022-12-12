@@ -64,11 +64,9 @@ function Contact() {
                 >
                     {({errors, touched}) => (
                         <Form className="contactForm ">
-
-
                             <div className="pos-relative">
                                 <label htmlFor="Name">name</label>
-                                <Field className="effect-green-longer" name="name" placeholder="Ewok"/>
+                                <Field className="effect-underline" name="name" placeholder="Ewok"/>
                                 <span className="focus-border"></span>
                                 {errors.name ? (
                                     <div>{errors.name}</div>
@@ -77,7 +75,7 @@ function Contact() {
                             <div className="pos-relative">
                                 <label htmlFor="email">e-mail</label>
                                 <Field
-                                    className="effect-green-longergreen"
+                                    className="effect-underline"
                                     name="email"
                                     placeholder="ewok@sw.com"
                                     type="email"
@@ -87,7 +85,7 @@ function Contact() {
                             </div>
                             <div className="pos-relative">
                                 <label htmlFor="subject">subject</label>
-                                <Field className="effect-green-longer" name="subject" placeholder="subject"/>
+                                <Field className="effect-underline" name="subject" placeholder="subject"/>
                                 {errors.subject ? (
                                     <div>{errors.subject}</div>
                                 ) : null}
@@ -95,7 +93,7 @@ function Contact() {
                             </div>
                             <div className="pos-relative">
                                 <label htmlFor="message">message</label>
-                                <Field className="effect-green-longer" component='textarea' row={7} id="message"
+                                <Field className="effect-underline" component='textarea' row={7} id="message"
                                        name="message"
                                        placeholder="message"/>
                                 <span className="focus-border"></span>

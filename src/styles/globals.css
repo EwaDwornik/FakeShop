@@ -68,12 +68,18 @@
   background-color: white;
   z-index: 200;
   position: relative;
+  font-size: 1vw;
 }
 
 .cartItem {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+}
+.cartItem button {
+  max-height: 50%;
+  margin: 5%;
 }
 .cartItem img {
   max-height: 100px;
@@ -135,39 +141,27 @@
 
 .formAddProduct {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
+  text-align: left;
+  font-size: 15px;
+  color: purple;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 5%;
 }
-.formAddProduct div {
-  margin: 5%;
-  width: 15vw;
-}
-
-.pos-relative {
-  position: relative;
-  display: grid;
-  align-content: start;
-}
-
-.effect-green {
-  border: 0;
-  border-bottom: 1px solid #ccc;
+.formAddProduct div input, .formAddProduct textarea, .formAddProduct button {
+  width: 300px;
+  height: 30px;
+  margin-bottom: 5%;
+  border: 1px solid purple;
 }
 
-.effect-green ~ .focus-border {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: purple;
-  transition: 0.4s;
-}
-
-.effect-green:focus ~ .focus-border {
-  width: 100%;
-  transition: 0.4s;
+.addProductBox {
+  background: url("../../images/addProductForm.jpg") no-repeat center #eee;
+  background-size: 100%;
+  display: flex;
+  padding: 5%;
+  border: 1px solid purple;
+  justify-content: space-between;
 }
 
 .crudListTable {
@@ -297,7 +291,6 @@
 
 .contact-background {
   background-color: purple;
-  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -308,7 +301,7 @@
   height: 70px;
 }
 .contact-background div {
-  margin: 5%;
+  margin: 10%;
 }
 .contact-background a {
   color: white;
@@ -369,6 +362,33 @@ button:hover {
 
 :focus {
   outline: none;
+}
+
+.pos-relative {
+  position: relative;
+  display: grid;
+  align-content: start;
+  margin-bottom: 5%;
+}
+
+.effect-underline {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.effect-underline ~ .focus-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: purple;
+  transition: 0.4s;
+}
+
+.effect-underline:focus ~ .effect-underline {
+  width: 100%;
+  transition: 0.4s;
 }
 
 @media only screen and (max-width: 700px) {

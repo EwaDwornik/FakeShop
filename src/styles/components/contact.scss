@@ -1,6 +1,5 @@
 .contact-background {
   background-color: $main-color;
-  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +9,7 @@
     height: 70px;
   }
   div {
-    margin: 5%;
+    margin: 10%;
   }
   a {
     color: white;
