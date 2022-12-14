@@ -3,7 +3,7 @@ import React from "react";
 import labels from "../images/carousel-shop-1.jpg"
 import nicelyPacked from "../images/carousel-shop-4.jpg"
 import chilledMe from "../images/ChilledMe.jpg"
-import friends from "../images/carousel-shop-6.jpg"
+import friends from "../images/about2.jpg"
 
 const About = () => {
     return (
