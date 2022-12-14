@@ -1,5 +1,7 @@
 import {firestore} from "./firebase.config";
+import { collection } from "firebase/firestore";
 
-export const productsCollection = firestore.collection("products")
+
+export const productsCollection = collection(firestore, "products")
 
 

@@ -1,8 +1,10 @@
 import React, {useContext, useState} from "react";
 import {Context} from "../../context/context";
 import AddProductCurd from "./addProduct.curd";
-import {productsCollection} from "../../services/firebase/firebase.utils";
+import {doc, deleteDoc, setDoc, updateDoc} from "firebase/firestore";
+
 import {ProductNoFuture} from "../../model";
+import {firestore} from "../../services/firebase/firebase.config";
 
 const ProductList = () => {
     const {products} = useContext(Context)
@@ -13,21 +15,27 @@ const ProductList = () => {
 
     const addOrEdit = async (linkObject: ProductNoFuture) => {
         if (currentId === "") {
-            await productsCollection.doc(linkObject.id).set(linkObject);
+            //await productsCollection.doc(linkObject.id).set(linkObject);
+            await setDoc(doc(firestore, "products", linkObject.id), linkObject)
         } else {
-            await productsCollection.doc(currentId).update(linkObject);
+            //await productsCollection.doc(linkObject.id).set(linkObject);
+
+            // @ts-ignore
+            await updateDoc(doc(firestore, "products", currentId), linkObject)
+
             setCurrentId("");
         }
     };
 
     const deleteProduct = (id: string) => {
         setSubmitted(true);
-        productsCollection
-            .doc(id)
-            .delete()
-            .then(() => console.log("Document deleted" + id)) // Document deleted
-            .catch((error) => console.error("Error deleting document", error));
-    }
+        const docRef = doc(firestore, "products", id);
+        deleteDoc(docRef)
+            .then(() => {
+                console.log("Product has been deleted successfully.")
+            })
+
+    };
 
     const delProductSub = () => {
         setSubmitted(false);
@@ -39,46 +47,46 @@ const ProductList = () => {
             <div className="crudInformation">
                 Only admin can see this page
             </div>
-        <div className="addProductBox">
-            <AddProductCurd {...{addOrEdit, currentId}}/>
-            <div className="crudListTable">
-                {submitted ? (
-                    <div>
-                        <h4>You deleted successfully!</h4>
-                        <button onClick={delProductSub}>go back to list
-                        </button>
-                    </div>
-                ) : (
-                    <table>
-                        <tr>
-                            <th>id</th>
-                            <th>category</th>
-                            <th>title</th>
-                            <th>description</th>
-                            <th>image</th>
-                            <th>price</th>
-                            <th>edit or delete</th>
-                        </tr>
-                        {products.map((product, key) =>
+            <div className="addProductBox">
+                <AddProductCurd {...{addOrEdit, currentId}}/>
+                <div className="crudListTable">
+                    {submitted ? (
+                        <div>
+                            <h4>You deleted successfully!</h4>
+                            <button onClick={delProductSub}>go back to list
+                            </button>
+                        </div>
+                    ) : (
+                        <table>
                             <tr>
-                                <td>{key + 1}</td>
-                                <td>{product.category}</td>
-                                <td>{product.title}</td>
-                                <td>{product.description}</td>
-                                <td>{product.image}</td>
-                                <td>{product.price}</td>
-                                <td>
-                                    <button onClick={() => {
-                                        deleteProduct(product.id)
-                                    }}>Delete
-                                    </button>
-                                    <button onClick={() => setCurrentId(product.id)}>Edit</button>
-                                </td>
+                                <th>id</th>
+                                <th>category</th>
+                                <th>title</th>
+                                <th>description</th>
+                                <th>image</th>
+                                <th>price</th>
+                                <th>edit or delete</th>
                             </tr>
-                        )}
-                    </table>)}
+                            {products.map((product, key) =>
+                                <tr>
+                                    <td>{key + 1}</td>
+                                    <td>{product.category}</td>
+                                    <td>{product.title}</td>
+                                    <td>{product.description}</td>
+                                    <td>{product.image}</td>
+                                    <td>{product.price}</td>
+                                    <td>
+                                        <button onClick={() => {
+                                            deleteProduct(product.id)
+                                        }}>Delete
+                                        </button>
+                                        <button onClick={() => setCurrentId(product.id)}>Edit</button>
+                                    </td>
+                                </tr>
+                            )}
+                        </table>)}
+                </div>
             </div>
-        </div>
         </div>
     )
 };

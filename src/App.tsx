@@ -4,6 +4,8 @@ import {ProductNoFuture} from "./model";
 import {productsCollection} from "./services/firebase/firebase.utils";
 import {Context} from "./context/context";
 import 'animate.css';
+import { getDocs } from "firebase/firestore";
+
 
 const App = (props: any) => {
     const [products, setProducts] = useState<ProductNoFuture[]>([]);
@@ -12,19 +14,16 @@ const App = (props: any) => {
 
 
     const getProducts = async () => {
-        let tempProducts: any[] = []
-        productsCollection.get().then((snapshot) => {
-            snapshot.forEach((doc) => {
-                tempProducts = [...tempProducts, doc.data()]
-            })
-        }).then(() => {
-            setProducts(tempProducts)
-        })
+        const notesSnapshot = await getDocs(productsCollection);
+        const tempProducts: any = notesSnapshot.docs.map((doc) => doc.data());
+        setProducts(tempProducts)
     }
 
     useEffect(() => {
         getProducts();
     }, [])
+
+
 
 
     localStorage.setItem('items', JSON.stringify(cartItems));

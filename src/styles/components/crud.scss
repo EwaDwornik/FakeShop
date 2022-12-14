@@ -32,13 +32,10 @@
 }
 
 .addProductBox {
-  background: url("../../images/addProductForm.jpg") repeat center #eee;
   height: 100%;
-  background-size:100%;
   display: flex;
   flex-wrap: wrap;
   padding: 5%;
-  border: 1px solid $main-color;
   justify-content: space-between;
 }
 

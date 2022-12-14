@@ -162,6 +162,7 @@
   color: purple;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 5%;
+  border: 1px solid purple;
 }
 .formAddProduct div input, .formAddProduct textarea, .formAddProduct button {
   width: 300px;
@@ -202,13 +203,10 @@
 }
 
 .addProductBox {
-  background: url("../../images/addProductForm.jpg") repeat center #eee;
   height: 100%;
-  background-size: 100%;
   display: flex;
   flex-wrap: wrap;
   padding: 5%;
-  border: 1px solid purple;
   justify-content: space-between;
 }
 
@@ -345,8 +343,7 @@
 }
 
 .contact-box {
-  background: url("../../images/about1.jpeg") repeat center;
-  background-position: 0 0;
+  background: url("../../images/about1.jpeg") repeat 0 0;
   background-size: 100%;
   display: flex;
   padding: 10%;

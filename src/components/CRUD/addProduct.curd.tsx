@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {categories, initialStateAddForm} from "../../services/utilities";
-import {productsCollection} from "../../services/firebase/firebase.utils";
 import {AddOrEditProps} from "../../model";
+import { doc, getDoc } from "firebase/firestore";
+import {firestore} from "../../services/firebase/firebase.config";
+
 
 const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
         const [product, setProduct] = useState(initialStateAddForm);
@@ -14,11 +16,12 @@ const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
             setProduct({...initialStateAddForm});
         };
 
-        const getLinkById = async (id: string) => {
-            const doc = await productsCollection.doc(id).get();
-            console.log(doc.data());
+        const getProductById = async (id: string) => {
+            const docRef = doc(firestore, "products", id);
+            const docSnap = await getDoc(docRef);
+
             // @ts-ignore
-            setProduct({...doc.data()});
+            setProduct({...docSnap.data()});
         };
 
         const handleInputChange = (e: any) => {
@@ -35,14 +38,13 @@ const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
             if (currentId === "") {
                 setProduct({...initialStateAddForm});
             } else {
-                getLinkById(currentId);
+                getProductById(currentId);
             }
         }, [currentId]);
 
 
         return (
             <div>
-
                 <div className="formAddProduct">
                     {submitted ? (
                         <div>
