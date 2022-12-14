@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import { Context} from "../../context/context";
+import {Context} from "../../context/context";
 import AddProductCurd from "./addProduct.curd";
 import {productsCollection} from "../../services/firebase/firebase.utils";
 import {ProductNoFuture} from "../../model";
@@ -36,6 +36,10 @@ const ProductList = () => {
 
     return (
         <div>
+            <div className="crudInformation">
+                Only admin can see this page
+            </div>
+        <div className="addProductBox">
             <AddProductCurd {...{addOrEdit, currentId}}/>
             <div className="crudListTable">
                 {submitted ? (
@@ -53,6 +57,7 @@ const ProductList = () => {
                             <th>description</th>
                             <th>image</th>
                             <th>price</th>
+                            <th>edit or delete</th>
                         </tr>
                         {products.map((product, key) =>
                             <tr>
@@ -62,16 +67,18 @@ const ProductList = () => {
                                 <td>{product.description}</td>
                                 <td>{product.image}</td>
                                 <td>{product.price}</td>
-                                <button onClick={() => {
-                                    deleteProduct(product.id)
-                                }}>Delete
-                                </button>
-                                <button onClick={() => setCurrentId(product.id)}>Edit</button>
-
+                                <td>
+                                    <button onClick={() => {
+                                        deleteProduct(product.id)
+                                    }}>Delete
+                                    </button>
+                                    <button onClick={() => setCurrentId(product.id)}>Edit</button>
+                                </td>
                             </tr>
                         )}
                     </table>)}
             </div>
+        </div>
         </div>
     )
 };

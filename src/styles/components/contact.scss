@@ -9,21 +9,21 @@
     height: 70px;
   }
   div {
-    margin: 10%;
+    margin: 2%;
   }
   a {
     color: white;
-
   }
 }
 
 .contact-box {
-  background: url("../../images/Ewa.jpg") no-repeat center #eee;
+  background: url("../../images/about1.jpeg") no-repeat center;
+  background-position: 0 0;
   background-size:100%;
   display: flex;
-  padding: 5%;
+  padding: 10%;
   border: 1px solid $main-color;
-  justify-content: space-between;
+  justify-content: start;
 }
 
 .contactForm {

@@ -41,7 +41,8 @@ const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
 
 
         return (
-            <div className="addProductBox">
+            <div>
+
                 <div className="formAddProduct">
                     {submitted ? (
                         <div>

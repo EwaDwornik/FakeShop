@@ -155,13 +155,15 @@
   border: 1px solid purple;
 }
 
-.addProductBox {
-  background: url("../../images/addProductForm.jpg") no-repeat center #eee;
-  background-size: 100%;
+.crudInformation {
+  background-color: purple;
   display: flex;
-  padding: 5%;
-  border: 1px solid purple;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 30px;
+  padding: 3%;
 }
 
 .crudListTable {
@@ -169,15 +171,29 @@
   align-items: center;
   justify-content: center;
   margin: 2%;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 .crudListTable table {
-  max-width: 30%;
-  border: 1px solid black;
   font-size: 1vw;
+  margin: 2%;
 }
 .crudListTable table th, .crudListTable table td {
   border: 1px solid black;
   padding: 1%;
+}
+.crudListTable table th {
+  background-color: purple;
+  color: white;
+}
+
+.addProductBox {
+  background: url("../../images/addProductForm.jpg") no-repeat center #eee;
+  height: 100%;
+  background-size: 100%;
+  display: flex;
+  padding: 5%;
+  border: 1px solid purple;
+  justify-content: space-between;
 }
 
 .price-slider {
@@ -301,19 +317,20 @@
   height: 70px;
 }
 .contact-background div {
-  margin: 10%;
+  margin: 2%;
 }
 .contact-background a {
   color: white;
 }
 
 .contact-box {
-  background: url("../../images/Ewa.jpg") no-repeat center #eee;
+  background: url("../../images/about1.jpeg") no-repeat center;
+  background-position: 0 0;
   background-size: 100%;
   display: flex;
-  padding: 5%;
+  padding: 10%;
   border: 1px solid purple;
-  justify-content: space-between;
+  justify-content: start;
 }
 
 .contactForm {
