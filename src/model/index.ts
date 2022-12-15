@@ -52,3 +52,9 @@ export interface ContactValues {
     subject: string;
     message: string;
 }
+
+export interface UserInterface {
+    name: string;
+    email: string;
+    password: string
+}

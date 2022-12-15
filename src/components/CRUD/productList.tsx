@@ -15,10 +15,8 @@ const ProductList = () => {
 
     const addOrEdit = async (linkObject: ProductNoFuture) => {
         if (currentId === "") {
-            //await productsCollection.doc(linkObject.id).set(linkObject);
             await setDoc(doc(firestore, "products", linkObject.id), linkObject)
         } else {
-            //await productsCollection.doc(linkObject.id).set(linkObject);
 
             // @ts-ignore
             await updateDoc(doc(firestore, "products", currentId), linkObject)
