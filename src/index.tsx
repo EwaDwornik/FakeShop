@@ -11,6 +11,9 @@ import {routes} from "./services/routes";
 import Navigation from "./components/Navigation";
 import Shop from "./components/Shop";
 import Contact from "./components/Contact";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Reset from "./components/Reset";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -24,6 +27,9 @@ root.render(
                 <Route path={routes.home} element={<Home/>}/>
                 <Route path={routes.addProduct} element={<ProductList/>}/>
                 <Route path={routes.shop} element={<Shop/>}/>
+                <Route path={routes.login} element={<Login/>}/>
+                <Route path={routes.register} element={<Register/>}/>
+                <Route path={routes.reset} element={<Reset/>}/>
                 <Route path={routes.contact} element={<Contact/>}/>
             </Routes>
         </App>

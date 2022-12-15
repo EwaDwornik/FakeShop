@@ -18,7 +18,7 @@ const ContactSchema = Yup.object().shape({
 
 
 // Simple contact page.
-function Contact() {
+const Contact = () =>{
 
     const templateParams = {
         name: '',
