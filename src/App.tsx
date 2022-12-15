@@ -4,14 +4,13 @@ import {ProductNoFuture} from "./model";
 import {productsCollection} from "./services/firebase/firebase.utils";
 import {Context} from "./context/context";
 import 'animate.css';
-import { getDocs } from "firebase/firestore";
+import {getDocs} from "firebase/firestore";
 
 
 const App = (props: any) => {
     const [products, setProducts] = useState<ProductNoFuture[]>([]);
     const [cartOpen, setCartOpen] = useState(false);
-    const [cartItems, setCartItems] = useState<ProductNoFuture[]>( []);
-
+    const [cartItems, setCartItems] = useState<ProductNoFuture[]>([]);
 
     const getProducts = async () => {
         const notesSnapshot = await getDocs(productsCollection);
@@ -21,13 +20,10 @@ const App = (props: any) => {
 
     useEffect(() => {
         getProducts();
+        const storedItems = JSON.parse(localStorage.getItem('items') || "")
+        setCartItems(storedItems)
     }, [])
 
-
-
-
-    localStorage.setItem('items', JSON.stringify(cartItems));
-    const storedItems = JSON.parse(localStorage.getItem('items') || "")
 
     const handleAdd = (clickedItem: ProductNoFuture) => {
         setCartItems(previous => {
@@ -38,21 +34,29 @@ const App = (props: any) => {
                     item.id === clickedItem.id ? {...item, amountInCart: item.amountInCart + 1} : item
                 ))
             }
-            return [...previous, {...clickedItem, amountInCart: 1}]
+            const newItems = [...previous, {...clickedItem, amountInCart: 1}]
+            localStorage.setItem('items', JSON.stringify(newItems));
+            return newItems
         })
+
     }
     const getTotalItems = (items: ProductNoFuture[]) => items.reduce((ack: number, item) => ack + item.amountInCart, 0);
 
     const handleRemove = (id: string) => {
-        setCartItems(previous =>
-            previous.reduce((ack, item) => {
-                if (item.id === id) {
-                    if (item.amountInCart === 1) return ack;
-                    return [...ack, {...item, amountInCart: item.amountInCart - 1}];
-                } else {
-                    return [...ack, item];
-                }
-            }, [] as ProductNoFuture[])
+
+        setCartItems(previous => {
+                const newItems = previous.reduce((ack, item) => {
+                    if (item.id === id) {
+                        if (item.amountInCart === 1) return ack;
+                        return [...ack, {...item, amountInCart: item.amountInCart - 1}];
+                    } else {
+                        return [...ack, item];
+                    }
+                }, [] as ProductNoFuture[])
+                localStorage.setItem('items', JSON.stringify(newItems));
+
+                return newItems
+            }
         );
     };
 
@@ -66,7 +70,7 @@ const App = (props: any) => {
                 handleAdd,
                 getTotalItems,
                 handleRemove,
-                storedItems
+                storedItems: cartItems
             }}>
                 {/* sharing data with all children */}
                 {props.children}

@@ -45,19 +45,20 @@ const Navigation = () => {
             <div className="navigation-links">
                 <Link to={routes.home}>Home</Link>
                 <Link to={routes.shop}>Shop</Link>
-                <Link to={routes.addProduct}>Add product</Link>
                 <Link to={routes.contact}>Contact</Link>
                 {user === null ? <Link to={routes.login}>Login</Link> : <>
-                    <p>Logged in as {name}</p>
-                    <button onClick={logout}>
+                    <Link to={routes.addProduct}>Add product</Link>
+                    <div onClick={logout}>
                         Logout
-                    </button>
+                    </div>
                 </>}
                 <div className="cart-open" onClick={() => setCartOpen(true)}>
                     <ShoppingCartIcon/>
                     {getTotalItems(storedItems)}
                 </div>
+                {user === null ? <p></p> : <p>Hello {name}!</p>}
             </div>
+
         </header>
     )
 }
