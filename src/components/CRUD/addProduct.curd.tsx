@@ -1,13 +1,19 @@
 import React, {useEffect, useState} from "react";
 import {categories, initialStateAddForm} from "../../services/utilities";
 import {AddOrEditProps} from "../../model";
-import { doc, getDoc } from "firebase/firestore";
-import {firestore} from "../../services/firebase/firebase.config";
+import {doc, getDoc} from "firebase/firestore";
+import {firestore, storage} from "../../services/firebase/firebase.config";
+
+import {useUser} from "../../hooks/user";
+import {getDownloadURL, ref, uploadBytesResumable} from "@firebase/storage";
 
 
 const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
         const [product, setProduct] = useState(initialStateAddForm);
         const [submitted, setSubmitted] = useState(false);
+        const [progresspercent, setProgresspercent] = useState(0);
+
+        //const {user} = useUser()
 
         const handleSubmit = async (e: any) => {
             e.preventDefault();
@@ -24,11 +30,41 @@ const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
             setProduct({...docSnap.data()});
         };
 
+
+        // const file = e.target.files[0]
+        // console.log(file, "xxx")
+        // setProduct({...product, image: 'cdnURL'})
+
+
         const handleInputChange = (e: any) => {
             const {name, value} = e.target;
-            setProduct({...product, [name]: value});
+            setProduct({...product, [name]: value})
         };
 
+        const handlePhoto = (e: any) => {
+            e.preventDefault()
+            const file = e.target.files[0]
+            if (!file) return;
+            const storageRef = ref(storage, `files/${file.name}`);
+            const uploadTask = uploadBytesResumable(storageRef, file);
+
+            uploadTask.on("state_changed",
+                (snapshot) => {
+                    const progress =
+                        Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                    setProgresspercent(progress);
+                },
+                (error) => {
+                    alert(error);
+                },
+                () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                        setProduct({...product, image: downloadURL})
+                    });
+                }
+            );
+
+        };
 
         const newProduct = () => {
             setSubmitted(false);
@@ -108,10 +144,9 @@ const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
                             <div className="pos-relative">
                                 <label className="form-label">image</label>
                                 <input
-                                    type="field"
+                                    type="file"
                                     className="effect-underline"
-                                    value={product.image}
-                                    onChange={handleInputChange}
+                                    onChange={handlePhoto}
                                     name="image"
                                 />
                                 <span className="focus-border"></span>

@@ -16,9 +16,12 @@
   }
   a:hover, div:hover {
     font-size: clamp(21px, 2vw, 30px);
+    cursor: pointer;
   }
   p {
     color: white;
+    font-size: clamp(17px, 1.5vw, 25px);
   }
+
 
 }
