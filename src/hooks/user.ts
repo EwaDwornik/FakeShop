@@ -1,5 +1,3 @@
-import firebase from "firebase/compat";
-
 
 export const useUser = async () => {
     // useMemo

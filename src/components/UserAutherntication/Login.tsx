@@ -1,24 +1,14 @@
-import React, {useEffect, useState} from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
+import React, { useState} from "react";
+import { Link } from "react-router-dom";
 import {signInWithEmailAndPassword} from "firebase/auth";
-import {signInWithGoogle} from "../services/providers/authentications";
-import {auth} from "../services/firebase/firebase.config";
+import {signInWithGoogle} from "../../services/providers/authentications";
+import {auth} from "../../services/firebase/firebase.config";
+import {useLoginAuth} from "../../hooks/useLoginAuth";
 
 const Login = () => {
-    const [email, setEmail] = useState("");
+    const {email, setEmail} = useLoginAuth()
+
     const [password, setPassword] = useState("");
-    const [user, loading] = useAuthState(auth);
-
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (loading) {
-            // maybe trigger a loading screen
-            return;
-        }
-        if (user) navigate("/");
-    }, [user, loading]);
 
     return (
         <div className="login">

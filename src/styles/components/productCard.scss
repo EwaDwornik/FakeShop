@@ -33,16 +33,18 @@
 
   img {
     object-fit: contain;
-    max-height: 130px;
-    max-width: 230px;
+    max-height: 210px;
+    max-width: 300px;
     width: auto;
     height: auto;
     padding: 5%;
-    transition: max-height 1s linear;
+    transition: max-height 0.5s linear;
   }
 
   img:hover {
-    max-height: 250px;
+    max-height: 400px;
+    padding: 0;
+
   }
 
   div:nth-child(1) {

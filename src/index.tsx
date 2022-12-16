@@ -11,9 +11,9 @@ import {routes} from "./services/routes";
 import Navigation from "./components/Navigation";
 import Shop from "./components/Shop";
 import Contact from "./components/Contact";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Reset from "./components/Reset";
+import Login from "./components/UserAutherntication/Login";
+import Register from "./components/UserAutherntication/Register";
+import Reset from "./components/UserAutherntication/Reset";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
