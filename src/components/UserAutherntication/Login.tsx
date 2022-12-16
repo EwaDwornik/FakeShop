@@ -1,7 +1,7 @@
 import React, { useState} from "react";
 import { Link } from "react-router-dom";
 import {signInWithEmailAndPassword} from "firebase/auth";
-import {signInWithGoogle} from "../../services/providers/authentications";
+import {signInWithGoogle} from "../../services/authentications";
 import {auth} from "../../services/firebase/firebase.config";
 import {useLoginAuth} from "../../hooks/useLoginAuth";
 

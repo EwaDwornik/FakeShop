@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {registerWithEmailAndPassword, signInWithGoogle} from "../../services/providers/authentications";
+import {registerWithEmailAndPassword, signInWithGoogle} from "../../services/authentications";
 import {useLoginAuth} from "../../hooks/useLoginAuth";
 
 const Register = () => {

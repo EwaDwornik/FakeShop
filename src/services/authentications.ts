@@ -1,6 +1,6 @@
 import {GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut} from "firebase/auth";
 import {addDoc, collection, getDocs, query, where} from "firebase/firestore";
-import {auth, firestore} from "../firebase/firebase.config";
+import {auth, firestore} from "./firebase/firebase.config";
 
 export const googleProvider = new GoogleAuthProvider();
 

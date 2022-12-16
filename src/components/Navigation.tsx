@@ -8,7 +8,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth, firestore} from "../services/firebase/firebase.config";
 import {collection, getDocs, query, where} from "firebase/firestore";
-import {logout} from "../services/providers/authentications";
+import {logout} from "../services/authentications";
 
 const Navigation = () => {
     const {cartOpen, setCartOpen, storedItems, getTotalItems, handleAdd, handleRemove} = useContext(Context)

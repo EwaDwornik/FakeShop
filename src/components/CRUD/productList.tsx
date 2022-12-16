@@ -40,8 +40,7 @@ const ProductList = () => {
         alert("product removed successfully");
     };
 
-    // if(user !== 'admin')
-    //     return <Navigate to={'/'} />
+
 
     return (
         <div>
