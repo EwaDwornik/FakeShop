@@ -4,13 +4,17 @@ import {ProductNoFuture} from "./model";
 import {productsCollection} from "./services/firebase/firebase.utils";
 import {Context} from "./context/context";
 import 'animate.css';
-import {getDocs} from "firebase/firestore";
+import {collection, getDocs, query, where} from "firebase/firestore";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth, firestore} from "./services/firebase/firebase.config";
+import {useNavigate} from "react-router-dom";
 
 
 const App = (props: any) => {
     const [products, setProducts] = useState<ProductNoFuture[]>([]);
     const [cartOpen, setCartOpen] = useState(false);
     const [cartItems, setCartItems] = useState<ProductNoFuture[]>([]);
+
 
     const getProducts = async () => {
         const notesSnapshot = await getDocs(productsCollection);
@@ -61,6 +65,29 @@ const App = (props: any) => {
     };
 
 
+    const [user, loading] = useAuthState(auth);
+    const [name, setName] = useState("");
+
+    const navigate = useNavigate();
+
+    const fetchUserName = async () => {
+        try {
+            const q = query(collection(firestore, "users"), where("uid", "==", user?.uid));
+            const doc = await getDocs(q);
+            const data = doc.docs[0].data();
+            setName(data.name);
+        } catch (err) {
+            console.error(err);
+            alert("An error occurred while fetching user data");
+        }
+    };
+    useEffect(() => {
+        if (loading) return;
+        if (!user) return navigate("/");
+        fetchUserName();
+    }, [user, loading]);
+
+
     return (
         <div>
             <Context.Provider value={{
@@ -70,7 +97,8 @@ const App = (props: any) => {
                 handleAdd,
                 getTotalItems,
                 handleRemove,
-                storedItems: cartItems
+                storedItems: cartItems,
+
             }}>
                 {/* sharing data with all children */}
                 {props.children}

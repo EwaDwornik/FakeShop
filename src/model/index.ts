@@ -23,6 +23,12 @@ export interface ContextType {
     storedItems: ProductNoFuture[];
 }
 
+export interface ContextUserType {
+    user: any,
+    loading: any,
+    name: any,
+    setName: any ;
+}
 
 export interface PropsCard {
     product: ProductNoFuture;

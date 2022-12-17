@@ -1,22 +1,20 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {routes} from "../services/routes";
 import Drawer from "@mui/material/Drawer";
 import Cart from "./Cart/Cart";
 import {Context} from "../context/context";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import {useAuthState} from "react-firebase-hooks/auth";
-import {auth, firestore} from "../services/firebase/firebase.config";
+import { firestore} from "../services/firebase/firebase.config";
 import {collection, getDocs, query, where} from "firebase/firestore";
 import {logout} from "../services/authentications";
+import {useLoginAuth} from "../hooks/useLoginAuth";
 
 const Navigation = () => {
     const {cartOpen, setCartOpen, storedItems, getTotalItems, handleAdd, handleRemove} = useContext(Context)
 
-    const [user, loading] = useAuthState(auth);
+    const {user} = useLoginAuth()
     const [name, setName] = useState("");
-
-    const navigate = useNavigate();
 
     const fetchUserName = async () => {
         try {
@@ -26,14 +24,12 @@ const Navigation = () => {
             setName(data.name);
         } catch (err) {
             console.error(err);
-            alert("An error occurred while fetching user data");
+
         }
     };
     useEffect(() => {
-        if (loading) return;
-        if (!user) return navigate("/");
         fetchUserName();
-    }, [user, loading]);
+    }, [user]);
 
     return (
         <header className="navigation">

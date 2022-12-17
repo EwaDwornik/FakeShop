@@ -13,3 +13,12 @@ export const Context = createContext<ContextType>({
         storedItems: []
     }
 )
+
+// export const ContextUser = createContext<ContextUserType>({
+//     user: auth,
+//     loading: auth,
+//     name: '',
+//     setName: () => {
+//     },
+// }
+// )

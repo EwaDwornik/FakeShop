@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {auth} from "../../services/firebase/firebase.config";
-import {sendPasswordResetEmail} from "firebase/auth";
 import {useLoginAuth} from "../../hooks/useLoginAuth";
+import {sendPasswordReset} from "../../services/authentications";
 
 const Reset = () => {
     const { email, setEmail} = useLoginAuth()
@@ -18,7 +17,7 @@ const Reset = () => {
                     placeholder="E-mail Address"
                 />
                 <button
-                    onClick={() => sendPasswordResetEmail(auth, email)}
+                    onClick={() => sendPasswordReset(email)}
                 >
                     Send password reset email
                 </button>

@@ -14,5 +14,5 @@ export const useLoginAuth = () => {
         if (user) navigate("/");
     }, [user, loading]);
 
-    return {email, setEmail};
+    return {email, setEmail, user};
 }
