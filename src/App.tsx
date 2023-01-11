@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import './styles/globals.scss';
 import {ProductNoFuture} from "./model";
-import {productsCollection} from "./services/firebase/firebase.utils";
 import {Context} from "./context/context";
 import 'animate.css';
 import {collection, getDocs, query, where} from "firebase/firestore";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth, firestore} from "./services/firebase/firebase.config";
 import {useNavigate} from "react-router-dom";
+import {getProducts, getTotalItems} from "./services/utilities";
 
 
 const App = (props: any) => {
@@ -16,14 +16,8 @@ const App = (props: any) => {
     const [cartItems, setCartItems] = useState<ProductNoFuture[]>([]);
 
 
-    const getProducts = async () => {
-        const notesSnapshot = await getDocs(productsCollection);
-        const tempProducts: any = notesSnapshot.docs.map((doc) => doc.data());
-        setProducts(tempProducts)
-    }
-
     useEffect(() => {
-        getProducts();
+        getProducts(setProducts);
         const storedItems = JSON.parse(localStorage.getItem('items') || "")
         setCartItems(storedItems)
     }, [])
@@ -44,7 +38,6 @@ const App = (props: any) => {
         })
 
     }
-    const getTotalItems = (items: ProductNoFuture[]) => items.reduce((ack: number, item) => ack + item.amountInCart, 0);
 
     const handleRemove = (id: string) => {
 

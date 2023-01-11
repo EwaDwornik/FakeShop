@@ -14,6 +14,7 @@ import Contact from "./components/Contact";
 import Login from "./components/UserAutherntication/Login";
 import Register from "./components/UserAutherntication/Register";
 import Reset from "./components/UserAutherntication/Reset";
+import ProductPage from './components/ProductPage';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -21,11 +22,13 @@ const root = ReactDOM.createRoot(
 
 root.render(
     <BrowserRouter>
+        <body className="bg-white dark:bg-black">
         <App>
             <Navigation/>
             <Routes>
                 <Route path={routes.home} element={<Home/>}/>
                 <Route path={routes.addProduct} element={<ProductList/>}/>
+                <Route path="/:id" element={<ProductPage/>}/>
                 <Route path={routes.shop} element={<Shop/>}/>
                 <Route path={routes.login} element={<Login/>}/>
                 <Route path={routes.register} element={<Register/>}/>
@@ -33,6 +36,7 @@ root.render(
                 <Route path={routes.contact} element={<Contact/>}/>
             </Routes>
         </App>
+        </body>
     </BrowserRouter>
 );
 

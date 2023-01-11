@@ -12,7 +12,6 @@
 .products-cards {
   display: flex;
   flex-wrap: wrap;
-
   justify-content: space-around;
   margin: 2%;
   flex-direction: row;
@@ -32,41 +31,44 @@
   overflow: hidden;
 
   img {
-    object-fit: contain;
-    max-height: 210px;
-    max-width: 300px;
-    width: auto;
-    height: auto;
-    padding: 5%;
-    transition: max-height 0.5s linear;
+    transition: all linear 0.5s;
   }
-
   img:hover {
-    max-height: 400px;
-    padding: 0;
-
+    transform: scale(1.2);
   }
 
   div:nth-child(1) {
     background-color: $main-color;
     display: flex;
+    padding: 10px;
     justify-content: center;
     align-items: center;
     color: white;
   }
 
-  div:nth-child(4) {
+  div:nth-child(3) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: $main-color;
     position: absolute;
     bottom: 0;
+    padding: 10px;
+    width: 100%;
 
     div {
       display: flex;
       justify-content: center;
       align-items: center;
       color: white;
+      font-size: 1.1vw;
+    }
+
+
+
+    button:hover {
+      background-color: $main-color;
+      color: white;
+      font-weight: bold;
     }
   }
 }
