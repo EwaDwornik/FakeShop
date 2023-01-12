@@ -3,7 +3,6 @@ import ProductCards from "./ProductCard/ProductCards";
 import {Context} from "../context/context";
 
 const Shop = () => {
-
     const {handleAdd} = useContext(Context)
 
     return (

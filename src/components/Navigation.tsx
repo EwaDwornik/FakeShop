@@ -5,7 +5,7 @@ import Drawer from "@mui/material/Drawer";
 import Cart from "./Cart/Cart";
 import {Context} from "../context/context";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { firestore} from "../services/firebase/firebase.config";
+import {firestore} from "../services/firebase/firebase.config";
 import {collection, getDocs, query, where} from "firebase/firestore";
 import {logout} from "../services/authentications";
 import {useLoginAuth} from "../hooks/useLoginAuth";
