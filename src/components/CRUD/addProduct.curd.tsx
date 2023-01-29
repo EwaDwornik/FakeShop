@@ -4,8 +4,8 @@ import {AddOrEditProps} from "../../model";
 import {doc, getDoc} from "firebase/firestore";
 import {firestore, storage} from "../../services/firebase/firebase.config";
 
-import {useUser} from "../../hooks/user";
 import {getDownloadURL, ref, uploadBytesResumable} from "@firebase/storage";
+import { motion } from "framer-motion";
 
 
 const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
@@ -29,12 +29,6 @@ const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
             // @ts-ignore
             setProduct({...docSnap.data()});
         };
-
-
-        // const file = e.target.files[0]
-        // console.log(file, "xxx")
-        // setProduct({...product, image: 'cdnURL'})
-
 
         const handleInputChange = (e: any) => {
             const {name, value} = e.target;
@@ -81,10 +75,11 @@ const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
 
         return (
             <div>
-                <div className="formAddProduct">
+                <motion.div className="formAddProduct"
+                >
                     {submitted ? (
                         <div>
-                            <h4>You submitted successfully!</h4>
+                            <p>You submitted successfully!</p>
                             <button onClick={newProduct}>
                                 Add
                             </button>
@@ -159,7 +154,7 @@ const AddProductCurd = ({addOrEdit, currentId}: AddOrEditProps) => {
                             </div>
                         </div>
                     )}
-                </div>
+                </motion.div>
             </div>
         );
     }

@@ -41,7 +41,6 @@ const ProductList = () => {
     };
 
 
-
     return (
         <div>
             <div className="crudInformation">
@@ -52,7 +51,7 @@ const ProductList = () => {
                 <div className="crudListTable">
                     {submitted ? (
                         <div>
-                            <h4>You deleted successfully!</h4>
+                            <p>You deleted successfully!</p>
                             <button onClick={delProductSub}>go back to list
                             </button>
                         </div>

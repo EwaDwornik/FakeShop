@@ -130,7 +130,7 @@
   background-size: cover;
 }
 
-#first, #second {
+#second {
   width: 100%;
   height: 600px;
   perspective: 1px;
@@ -142,17 +142,12 @@
   align-items: center;
   color: purple;
 }
-#first div, #second div {
+#second div {
   position: absolute;
   bottom: 0;
   right: 0;
   color: purple;
   padding: 1%;
-}
-#first p, #second p {
-  font-size: 4vw;
-  background-color: rgba(255, 255, 255, 0.6);
-  padding: 2%;
 }
 
 @media only screen and (max-width: 700px) {
@@ -164,7 +159,7 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  min-width: 310px;
+  min-width: 330px;
   font-size: 15px;
   color: purple;
   padding: 5%;
@@ -202,6 +197,10 @@
 .crudListTable table th, .crudListTable table td {
   border: 1px solid black;
   padding: 1%;
+  min-width: 20px;
+}
+.crudListTable table th button, .crudListTable table td button {
+  margin: 5px;
 }
 .crudListTable table th {
   background-color: purple;
@@ -373,12 +372,22 @@
   color: purple;
   background-color: rgba(255, 255, 255, 0.6);
   padding: 5%;
+  min-width: 330px;
 }
 .contactForm div input, .contactForm textarea, .contactForm button {
   width: 300px;
   height: 30px;
   margin-bottom: 5%;
   border: 1px solid purple;
+  color: purple;
+}
+.contactForm button:hover {
+  color: white;
+  background-color: purple;
+}
+.contactForm button:active {
+  background-color: #9a009a;
+  color: white;
 }
 
 .login {
@@ -467,15 +476,47 @@
   margin-top: 7px;
 }
 
+#first {
+  background: url("../../images/boys.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#first {
+  width: 100%;
+  height: 600px;
+  perspective: 1px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transform: translateZ(-1px);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color: purple;
+}
+
+.noFutureWelcome {
+  font-size: 2vw;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 2%;
+}
+
+@media only screen and (max-width: 700px) {
+  #first {
+    height: 200px;
+  }
+}
 body {
   font-family: "Raleway", sans-serif;
   text-align: center;
-  font-size: 0.8vw;
+  font-size: 13px;
   min-font-size: 33px;
   margin-top: 70px;
 }
 body h4 {
-  font-size: 1.2vw;
+  font-size: 15vw;
 }
 
 a {
@@ -486,9 +527,12 @@ button {
   border: none;
   background: purple;
   color: white;
-  font-size: 1vw;
+  font-size: 13px;
   font-weight: normal;
   transition: filter 0.3s linear;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 button:hover {
@@ -529,9 +573,6 @@ button:hover {
 @media only screen and (max-width: 700px) {
   body, th, td {
     font-size: 10px;
-  }
-  body h3, th h3, td h3 {
-    font-size: 20px;
   }
 }
 @media print {

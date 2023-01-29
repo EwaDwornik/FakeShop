@@ -35,8 +35,8 @@ const ProductCards = ({handleAdd}: PropsCards) => {
                         onChange={((event: any) => setSelectCategory(event.target.value))}
                     >
                         <option value="" selected>all</option>
-                        {categories.map((category) =>
-                            <option value={category}>{category}</option>
+                        {categories.map((category, i) =>
+                            <option value={category} key={i}>{category}</option>
                         )}
                     </select>
 
@@ -54,8 +54,8 @@ const ProductCards = ({handleAdd}: PropsCards) => {
                 </div>
             </div>
             <div className="products-cards">
-                {results.map((product) =>
-                    <ProductCard product={product} handleAdd={handleAdd}/>
+                {results.map((product, i) =>
+                    <ProductCard product={product} handleAdd={handleAdd} key={i} />
                 )}
             </div>
 

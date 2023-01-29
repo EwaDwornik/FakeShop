@@ -36,15 +36,27 @@
   color: $main-color;
   background-color: rgba(255, 255, 255, .6);
   padding: 5%;
+  min-width: 330px;
 
   div input, textarea, button {
     width: 300px;
     height: 30px;
     margin-bottom: 5%;
     border: 1px solid $main-color;
+    color: $main-color;
+  }
+  button:hover {
+    color: white;
+    background-color: $main-color;
+  }
+  button:active {
+    background-color: $main-color-brighter;
+    color: white;
+
   }
 
 }
+
 
 
 @media only screen and (max-width: 700px) {
